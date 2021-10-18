@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.10.2
+    jupytext_version: 1.10.3
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -51,7 +51,6 @@ $$
 Para obtener la forma **canónica controlable** debemos escribir las matrices del sistema en espacio de estado ${A_c, B_c, C_c, D_c}$, de la siguiente manera:
 
 +++
-
 
 $$
 \begin{bmatrix} \dot{x_1}\\\dot{x_2} \\ \vdots \\ \dot{x_{n-1}}\\ \dot{x_n} \end{bmatrix} 
