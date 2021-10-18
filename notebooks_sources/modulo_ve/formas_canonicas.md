@@ -96,7 +96,7 @@ $$
 = 
 ~
 \underbrace{\begin{bmatrix}
--2 & -3\\
+-3 & -2\\
 1 & 0
 \end{bmatrix}}_{=~A_c}
 ~ 
@@ -135,8 +135,8 @@ $$
 = 
 ~
 \underbrace{\begin{bmatrix}
--2 & 1\\
--3 & 0
+-3 & 1\\
+-2 & 0
 \end{bmatrix}}_{=~A}
 ~ 
 \begin{bmatrix} {x_1}\\{x_2} \end{bmatrix} 
