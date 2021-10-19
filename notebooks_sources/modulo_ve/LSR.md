@@ -12,7 +12,19 @@ kernelspec:
   name: python3
 ---
 
-# Lugar simétrico de las raíces
+# Elección de la ubicación de los polos a lazo cerrado
+
+## Sistema de segundo orden dominante
+
+Una forma de seleccionar la ubicación de los polos es hacer lo mismo que se hacía en control clásico, es decir buscar que el sistema sea parecido a un segundo orden dominante. 
+
+Esto es perfectamente factible en control moderno. Sin embargo, tiene la desventaja que no sabemos para nada que sucederá con el esfuerzo de control $u$. Ubicando los polos de esta manera podemos obtener esfuerzos de control imposibles de realizar por nuestros actuadores, o que lleven a consumos de energías demasiado altos para nuestro sistema.
+
+Por esto, lo más recomendable es usar técnicas de control óptimo para seleccionar los polos del sistema a lazo cerrado.
+
++++ 
+
+## Lugar simétrico de las raíces
 
 Una técnica de control óptimo ampliamente usado es el control `regulador cuadrático lineal (LQR)`. En este curso veremos una versión simplificada que se conoce como __Lugar de las Raíces Simétrico__. Esta versión simplificada consiste en resolver el problema de minimización del siguiente índice de costo:
 
@@ -41,7 +53,7 @@ $$G_0(s) = \frac{Z(s)}{U(s)}=\mathbf{C_1}(s\mathbf I -\mathbf A)^{-1}\mathbf B$$
 Por lo tanto el problema lo podemos resolver para todo $\rho$ haciendo un lugar simétrico de las raíces de $G_0(-s)G_0(s)$. El lugar dará simétrico respecto del eje $j\omega$ ya que los polos y ceros de $G_0(-s)G_0(s)$ también estarán ubicados de forma simétrica.
 
 
-## Ejemplo ley de control con lugar simétrico de las raíces
+## Ejemplo de modos para la ley de control 
 
 Dado el sistema con las siguientes ecuaciones de estado:
 
