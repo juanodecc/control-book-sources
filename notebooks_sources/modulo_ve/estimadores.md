@@ -134,13 +134,13 @@ La primer ecuación la podemos comparar con la ecuación de la dinámica del est
 
 Haciendo esto tenemos que:
 
-$$\begin{eqnarray}
-\mathbf{x} &\leftarrow&\mathbf x_b\\
-\mathbf{A} &\leftarrow&\mathbf A_{bb}\\
-\mathbf{B}u &\leftarrow&\mathbf A_{ba}y+\mathbf B_{b}u\\
-y &\leftarrow&\dot y - A_{aa}y-\mathbf B_{a}u\\
-\mathbf{C} &\leftarrow&\mathbf A_{ab}\\
-\end{eqnarray}$$
+$$\begin{align*}
+\mathbf{x} &\leftarrow \mathbf x_b\\
+\mathbf{A} &\leftarrow \mathbf A_{bb}\\
+\mathbf{B}u &\leftarrow \mathbf A_{ba}y+\mathbf B_{b}u\\
+y &\leftarrow \dot y - A_{aa}y-\mathbf B_{a}u\\
+\mathbf{C} &\leftarrow \mathbf A_{ab}\\
+\end{align*}$$
 
 +++ {"id": "noiHPiuOiDMl"}
 
@@ -186,7 +186,7 @@ $$\det\left[s\mathbf I -(\mathbf{A}_{bb}-\mathbf {LA}_{ab}\right)]=0$$
 
 El problema que tiene el estimador es que depende de la derivada de $y$: uno mide $y$ y a partir de esta variable resuelve $\dot y$, lo cual implica amplificar cualquier ruido presente en la medición:
 
-$$\mathbf {\dot {\hat x}}_b = (\mathbf {A}_{bb}-\mathbf L\mathbf A_{ab})\mathbf{\hat{x}}_b + (\mathbf{A}_{ba}-\mathbf L A_{aa})y + (\mathbf B_b- \mathbf L B_a) +\mathbf L \dot y $$
+$$\mathbf {\dot {\hat x}}_b = (\mathbf {A}_{bb}-\mathbf L\mathbf A_{ab})\mathbf{\hat{x}}_b + (\mathbf{A}_{ba}-\mathbf L A_{aa})y + (\mathbf B_b- \mathbf L B_a)u +\mathbf L \dot y $$
 
 Para poder obtener una ecuación del estimador sin la derivada de la medición, lo que se puede hacer es redefinir la variable de estado como:
 
@@ -292,7 +292,7 @@ $$\dot{ \hat{ \mathbf{x}}}(t)= \underbrace{(\mathbf A-\mathbf{BK-LC)}}_{\mathbf{
 
 $$u(t)=\underbrace{-\mathbf{K}}_{\mathbf C_C}\mathbf{x}(t) + \underbrace {\mathbf 0}_{\mathbf D} u(t)$$
 
-Estas ecuaciones descrieben a un sistema controlador donde se estiman los estados con un estamidor de orden completo y los polos de la planta se deciden con la ley de control. Más adelante se mostrará como se agregan las referencias a este sistema.
+Estas ecuaciones describen a un sistema controlador donde se estiman los estados con un estimador de orden completo y los polos de la planta se deciden con la ley de control. Más adelante se mostrará como se agregan las referencias a este sistema.
 
 +++
 
@@ -310,13 +310,13 @@ La ecuación de salida la podemos del controlador la podemos escribir de la  sig
 
 $$u(t) = -K_a y(t) - \mathbf K _b \hat {\mathbf x}_B(t)= -K_a y(t) - \mathbf K _b \mathbf x_C(t) - \mathbf K _b \mathbf L y(t) =\underbrace{-\mathbf K _b}_{\mathbf C_r}\mathbf x_C(t) +\underbrace{(-K_a - \mathbf K _b \mathbf L)}_{\mathbf D_r} y(t)   $$
 
-Replanzandola en la ecuación del estimador anterior y reagrupando tenemos que:
+Reemplanzando en la ecuación del estimador anterior y reagrupando tenemos que:
 
 $$\dot{\mathbf x}_C = \underbrace{((\mathbf {A}_{bb}-\mathbf L\mathbf A_{ab})-(\mathbf B_b- \mathbf L B_a)\mathbf K_B )}_{\mathbf A_r}\mathbf x_C +\underbrace{[ (\mathbf {A}_{bb}-\mathbf L\mathbf A_{ab})\mathbf L +  (\mathbf {A}_{ba}-\mathbf L\mathbf A_{aa}) - (\mathbf B_b- \mathbf L B_a) (K_a + \mathbf K _b \mathbf L) ]}_{\mathbf B_r} y(t)$$
 
 +++
 
-Examinando las ecuaciones anteriores, podemos definir las ecuaciones que describien este compensador en espacio de estados como:
+Examinando las ecuaciones anteriores, podemos definir las ecuaciones que describen este compensador en espacio de estados como:
 
 $$ \mathbf A_r = (\mathbf {A}_{bb}-\mathbf L\mathbf A_{ab})-(\mathbf B_b- \mathbf L B_a)\mathbf K_B $$
 
