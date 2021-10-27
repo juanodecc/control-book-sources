@@ -198,6 +198,7 @@ $$
 $$
 
 Combinando las dos anteriores:
+
 $$
 \begin{bmatrix}
   z_i\mathbf{I}-\mathbf{A}&-\mathbf{B}\\

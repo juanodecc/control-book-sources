@@ -111,7 +111,6 @@ Recordando la ecuación del estimador con la ley de control, resulta la ecuació
 $$
 \begin{align*}
 \dot{ \hat{ \mathbf{x}}}(t)&= (\mathbf A-\mathbf{BK-LC}) \hat{\mathbf x}(t)+\mathbf Ly(t)\\
-
 u(t)&=-\mathbf{K}\mathbf{x}(t) +  \mathbf 0 u(t)
 \end{align*}
 $$
@@ -127,7 +126,6 @@ Por lo tanto, la forma general de introducir la referencia sin modificar las din
 $$
 \begin{align*}
 \dot{ \hat{ \mathbf{x}}}(t)&= (\mathbf A-\mathbf{BK-LC}) \hat{\mathbf x}(t)+\mathbf Ly(t) + \mathbf M r(t)\\
-
 u(t)&=-\mathbf{K}\mathbf{x}(t) +  \mathbf 0 u(t)+  N r(t)
 \end{align*}
 $$
@@ -170,6 +168,7 @@ y
 $$N=0$$
 
 Entonces se tiene:
+
 $$\dot{ \hat{ \mathbf{x}}}(t)= (\mathbf A-\mathbf{BK-LC}) \hat{\mathbf x}(t)+\mathbf L (y(t) - \mathbf  r(t))$$
 
 y 
@@ -209,7 +208,7 @@ u(t) &= \mathbf C_r \mathbf x_C  + \mathbf D_r y(t) + N_r r(t)
 
 Por lo tanto la ecuación de la entrada resulta:
 
-$$u(t) =-\mathbf K _b\mathbf x_C(t) +(-K_a - \mathbf K _b \mathbf L) y(t) + N_rr(t)  $$
+$$u(t) =-\mathbf K _b\mathbf x_C(t) +(-K_a - \mathbf K _b \mathbf L) y(t) + N_rr(t) $$
 
 De forma análoga a la anterior tenemos que el error estimación de $\mathbf x_b(t) - \hat {\mathbf x}_b(t)$, no debe depender de $r(t)$. Sin embargo, el trabajo algebraico para obtener explicitamente cuando debe valor $\mathbf M$ es bastante tedioso. Por lo tanto aquí se presenta el resultado:
 
