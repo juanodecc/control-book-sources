@@ -231,7 +231,7 @@ Obtener los ceros de transferencia para el sistema del ejercicio anterior median
 
 +++
 
-## Solución
+## Solución ejercicio 2
 
 Para resolver este problema de forma simbólica utilizaré `sympy`. Por lo tanto lo primer que haré será escribir todas las matrices en en modulo de `sympy`.
 
