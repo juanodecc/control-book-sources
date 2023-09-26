@@ -196,6 +196,7 @@ $P$ = número de polos a lazo abierto en el semi-plano derecho (RHP)
 $Z$ = número de polos a lazo cerrado en el RHP
 
 entonces
+
 $$
 Z=N + P
 $$
