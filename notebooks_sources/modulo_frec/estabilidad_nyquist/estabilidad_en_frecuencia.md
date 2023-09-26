@@ -514,10 +514,7 @@ $$
 para encontrar el margen de ganancia hay que determinar donde corta el Nyquist el eje real, esto es
 
 $$
-L(j\omega) =
-\left.\frac{6}{(s^2+2s+2)(s+2)}\right|_{s\rightarrow j\omega}
-=
-\frac{6[4(1-\omega^2)-j\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
+L(j\omega) = \left.\frac{6}{(s^2+2s+2)(s+2)}\right|_{s\rightarrow j\omega}=\frac{6[4(1-\omega^2)-j\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
 $$
 
 es decir,
