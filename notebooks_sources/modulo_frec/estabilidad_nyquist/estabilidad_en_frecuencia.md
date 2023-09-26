@@ -76,7 +76,7 @@ con $\phi(\omega)=\angle{L(j\omega)}$, donde:
 
 ```{figure} est_fig2.png
 ---
-height: 200px
+height: 300px
 name: est_fig2
 align : center
 ---
@@ -112,7 +112,7 @@ $$
 
 ```{figure} est_fig4.png
 ---
-height: 150px
+height: 200px
 name: est_fig4
 align : center
 ---
@@ -246,7 +246,7 @@ Curva de Nyquist en el plano-$s$ de $G(s)$
 
 ```{figure} est_fig7.png
 ---
-height: 250px
+height: 300px
 name: est_fig7
 align : center
 ---
@@ -257,7 +257,7 @@ Diagrama de Bode asintótico de $G(j\omega)$
 
 ```{figure} est_fig8.png
 ---
-height: 200px
+height: 300px
 name: est_fig8
 align : center
 ---
@@ -285,7 +285,7 @@ No hay polos en el RHP, por lo que el sistema es estable para cualquier valor de
 
 ```{figure} est_fig9.png
 ---
-height: 200px
+height: 250px
 name: est_fig9
 align : center
 ---
@@ -319,7 +319,7 @@ Comenzamos haciendo un Bode asintótico para dibujar el Nyquist para frecuencias
 
 ```{figure} est_fig11.png
 ---
-height: 250px
+height: 300px
 name: est_fig11
 align : center
 ---
@@ -330,7 +330,7 @@ Con el Bode anterior dibujamos el mapeo de $G(\mathscr{C}_1)$
 
 ```{figure} est_fig12.png
 ---
-height: 200px
+height: 250px
 name: est_fig12
 align : center
 ---
@@ -347,7 +347,7 @@ Agregamos a lo que dibujamos para frecuencias positivas $\omega>0$ a partir del 
 
 ```{figure} est_fig13.png
 ---
-height: 200px
+height: 250px
 name: est_fig13
 align : center
 ---
@@ -391,7 +391,7 @@ Con lo anterior podemos cerrar el diagrama como se ve en {numref}`est_fig14`
 
 ```{figure} est_fig14.png
 ---
-height: 200px
+height: 250px
 name: est_fig14
 align : center
 ---
@@ -410,7 +410,7 @@ Validamos lo anterior haciendo el lugar de las raíces asintótico para $k>0$. E
 
 ```{figure} est_fig15.png
 ---
-height: 200px
+height: 250px
 name: est_fig15
 align : center
 ---
@@ -425,7 +425,7 @@ $$
 
 ```{figure} est_fig16.png
 ---
-height: 200px
+height: 250px
 name: est_fig16
 align : center
 ---
@@ -449,7 +449,7 @@ La estabilidad para $k<0$ se puede analizar de dos formas, por un lado se puede 
 
 ```{figure} est_fig16_2.png
 ---
-height: 200px
+height: 250px
 name: est_fig16_2
 align : center
 ---
@@ -462,7 +462,7 @@ Por otro lado, lo que suele ser mas práctico, es plantear "cambiar la escala de
 
 ```{figure} est_fig16_3.png
 ---
-height: 200px
+height: 250px
 name: est_fig16_3
 align : center
 ---
@@ -488,7 +488,7 @@ Gráficamente es:
 
 ```{figure} est_fig17.png
 ---
-height: 200px
+height: 300px
 name: est_fig17
 align : center
 ---
@@ -548,7 +548,7 @@ Gráficamente en el diagrama de Bode los margenes de estabilidad, el margen de g
 
 ```{figure} est_fig18.png
 ---
-height: 200px
+height: 300px
 name: est_fig18
 align : center
 ---
