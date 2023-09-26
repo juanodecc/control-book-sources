@@ -490,7 +490,7 @@ Gráficamente es:
 
 ```{figure} est_fig17.png
 ---
-height: 300px
+height: 400px
 name: est_fig17
 align : center
 ---
