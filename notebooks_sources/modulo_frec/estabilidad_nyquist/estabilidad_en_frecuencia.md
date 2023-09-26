@@ -276,9 +276,11 @@ P = 0 \text{ en este caso no hay polos de } G(s) \text{ en } \mathbb{C}^+
 $$
 
 5. Usamos el criterio de Nyquist para determinar la estabilidad del sistema es:
+
 $$
 Z= N+P= 0
 $$
+
 No hay polos en el RHP, por lo que el sistema es estable para cualquier valor de $k$
 
 6. Para verificar la estabilidad del sistema, dibujamos el lugar de las raíces asintótico para este sistema con realimentación unitaria y ganancia $k$, tanto para $k$ negativos como positivos, esto es:
