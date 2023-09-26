@@ -358,6 +358,7 @@ Nyquist de $G(s)$ sin cerrar
 ```
 
 Analizamos el cierre por infinito, para lo que usaremos el contorno $\mathscr{C}_3$, que se parametriza como:
+
 $$
 \mathscr{C}_3: s=\rho e^{j\theta} \text{ con } \rho \longrightarrow 0 \text{ y } -\frac{\pi}{2}<\theta<\frac{\pi}{2} \text{ pasando por }\theta = 0
 $$
