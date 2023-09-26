@@ -76,7 +76,7 @@ con $\phi(\omega)=\angle{L(j\omega)}$, donde:
 
 ```{figure} est_fig2.png
 ---
-height: 200px
+height: 300px
 name: est_fig2
 align : center
 ---
@@ -112,7 +112,7 @@ $$
 
 ```{figure} est_fig4.png
 ---
-height: 150px
+height: 200px
 name: est_fig4
 align : center
 ---
