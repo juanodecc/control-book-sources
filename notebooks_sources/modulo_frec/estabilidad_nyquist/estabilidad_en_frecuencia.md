@@ -434,7 +434,7 @@ align : center
 Asíntota de Nyquist
 ```
 
-Todavía quedan algunas preguntas por responder sobre este problema. ¿Cómo cierra el Nyquist si incluimos el polo en la curva que encierra el semi-plano derecho? y ¿Qué sucede con la estabilidad para $k<0$?
+Todavía quedan algunas preguntas por responder sobre este ejemplo. ¿Cómo cierra el Nyquist si incluimos el polo en la curva que encierra el semi-plano derecho? y ¿Qué sucede con la estabilidad para $k<0$?
 
 Al incluir el polo dentro de la curva que encierra el semi-plano derecho, ahora los polos de $G(s)$ en RHP son $P=1$. Realizamos el diagrama de Nyquist para ese caso y contamos las vueltas a -1, por lo que $N=-1$, con lo que $Z=N+P=0$ esto es para todo $k>0$.
 
@@ -464,7 +464,7 @@ Por otro lado, lo que suele ser mas práctico, es plantear "cambiar la escala de
 
 ```{figure} est_fig16_3.png
 ---
-height: 250px
+height: 350px
 name: est_fig16_3
 align : center
 ---
