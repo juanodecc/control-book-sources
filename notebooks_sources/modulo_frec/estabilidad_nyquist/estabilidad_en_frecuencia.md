@@ -246,7 +246,7 @@ Curva de Nyquist en el plano-$s$ de $G(s)$
 
 ```{figure} est_fig7.png
 ---
-height: 250px
+height: 300px
 name: est_fig7
 align : center
 ---
