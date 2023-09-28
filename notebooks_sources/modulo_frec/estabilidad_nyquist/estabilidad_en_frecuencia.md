@@ -196,6 +196,7 @@ $P$ = número de polos a lazo abierto en el semi-plano derecho (RHP)
 $Z$ = número de polos a lazo cerrado en el RHP
 
 entonces
+
 $$
 Z=N + P
 $$
@@ -276,9 +277,11 @@ P = 0 \text{ en este caso no hay polos de } G(s) \text{ en } \mathbb{C}^+
 $$
 
 5. Usamos el criterio de Nyquist para determinar la estabilidad del sistema es:
+
 $$
 Z= N+P= 0
 $$
+
 No hay polos en el RHP, por lo que el sistema es estable para cualquier valor de $k$
 
 6. Para verificar la estabilidad del sistema, dibujamos el lugar de las raíces asintótico para este sistema con realimentación unitaria y ganancia $k$, tanto para $k$ negativos como positivos, esto es:
@@ -355,6 +358,7 @@ Nyquist de $G(s)$ sin cerrar
 ```
 
 Analizamos el cierre por infinito, para lo que usaremos el contorno $\mathscr{C}_3$, que se parametriza como:
+
 $$
 \mathscr{C}_3: s=\rho e^{j\theta} \text{ con } \rho \longrightarrow 0 \text{ y } -\frac{\pi}{2}<\theta<\frac{\pi}{2} \text{ pasando por }\theta = 0
 $$
@@ -432,7 +436,7 @@ align : center
 Asíntota de Nyquist
 ```
 
-Todavía quedan algunas preguntas por responder sobre este problema. ¿Cómo cierra el Nyquist si incluimos el polo en la curva que encierra el semi-plano derecho? y ¿Qué sucede con la estabilidad para $k<0$?
+Todavía quedan algunas preguntas por responder sobre este ejemplo. ¿Cómo cierra el Nyquist si incluimos el polo en la curva que encierra el semi-plano derecho? y ¿Qué sucede con la estabilidad para $k<0$?
 
 Al incluir el polo dentro de la curva que encierra el semi-plano derecho, ahora los polos de $G(s)$ en RHP son $P=1$. Realizamos el diagrama de Nyquist para ese caso y contamos las vueltas a -1, por lo que $N=-1$, con lo que $Z=N+P=0$ esto es para todo $k>0$.
 
@@ -462,7 +466,7 @@ Por otro lado, lo que suele ser mas práctico, es plantear "cambiar la escala de
 
 ```{figure} est_fig16_3.png
 ---
-height: 250px
+height: 350px
 name: est_fig16_3
 align : center
 ---
@@ -488,7 +492,7 @@ Gráficamente es:
 
 ```{figure} est_fig17.png
 ---
-height: 300px
+height: 400px
 name: est_fig17
 align : center
 ---
@@ -510,10 +514,7 @@ $$
 para encontrar el margen de ganancia hay que determinar donde corta el Nyquist el eje real, esto es
 
 $$
-L(j\omega) =
-\left.\frac{6}{(s^2+2s+2)(s+2)}\right|_{s\rightarrow j\omega}
-=
-\frac{6[4(1-\omega^2)-j\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
+L(j\omega) = \left.\frac{6}{(s^2+2s+2)(s+2)}\right|_{s\rightarrow j\omega}=\frac{6[4(1-\omega^2)-j\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
 $$
 
 es decir,
