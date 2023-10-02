@@ -480,11 +480,11 @@ Análisis de estabilidad en el punto $-\frac{1}{k}$ para todo valor de $k$.
 Usando diagramas de Nyquist se definen dos mediciones cuantitativas de "cuan estable es el sistema que estamos analizando". Estas son el margen de ganancia y el margen de fase.
 Sistemas con margenes de estabilidad de ganancia y fase grandes pueden soportar grandes variaciones en los parámetros antes de hacerse inestables. En el lugar de las raíces esto sería equivalente a cuan lejos se encuentran los polos del eje $j\omega$.
 
-### Definición de Margen de Fase $\Phi_M$
+### Definición de Margen de Ganancia $G_M$
 
 Es el cambio en la ganancia a lazo abierto, expresado en decibels ($dB$), requerida a fase $180º$ para hacer que el sistema sea inestable a lazo cerrado.
 
-### Definición de Margen de Fase $G_M$
+### Definición de Margen de Fase  $\Phi_M$
 
 Es el cambio de fase a lazo abierto cuando la ganancia del sistema es 1 en valor absoluto (o $0~dB$) que hace que el sistema a lazo cerrado sea inestable.
 
