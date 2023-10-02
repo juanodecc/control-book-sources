@@ -76,7 +76,7 @@ con $\phi(\omega)=\angle{L(j\omega)}$, donde:
 
 ```{figure} est_fig2.png
 ---
-height: 200px
+height: 300px
 name: est_fig2
 align : center
 ---
@@ -112,7 +112,7 @@ $$
 
 ```{figure} est_fig4.png
 ---
-height: 150px
+height: 200px
 name: est_fig4
 align : center
 ---
@@ -196,6 +196,7 @@ $P$ = número de polos a lazo abierto en el semi-plano derecho (RHP)
 $Z$ = número de polos a lazo cerrado en el RHP
 
 entonces
+
 $$
 Z=N + P
 $$
@@ -246,7 +247,7 @@ Curva de Nyquist en el plano-$s$ de $G(s)$
 
 ```{figure} est_fig7.png
 ---
-height: 250px
+height: 300px
 name: est_fig7
 align : center
 ---
@@ -257,7 +258,7 @@ Diagrama de Bode asintótico de $G(j\omega)$
 
 ```{figure} est_fig8.png
 ---
-height: 200px
+height: 300px
 name: est_fig8
 align : center
 ---
@@ -276,16 +277,18 @@ P = 0 \text{ en este caso no hay polos de } G(s) \text{ en } \mathbb{C}^+
 $$
 
 5. Usamos el criterio de Nyquist para determinar la estabilidad del sistema es:
+
 $$
 Z= N+P= 0
 $$
+
 No hay polos en el RHP, por lo que el sistema es estable para cualquier valor de $k$
 
 6. Para verificar la estabilidad del sistema, dibujamos el lugar de las raíces asintótico para este sistema con realimentación unitaria y ganancia $k$, tanto para $k$ negativos como positivos, esto es:
 
 ```{figure} est_fig9.png
 ---
-height: 200px
+height: 250px
 name: est_fig9
 align : center
 ---
@@ -319,7 +322,7 @@ Comenzamos haciendo un Bode asintótico para dibujar el Nyquist para frecuencias
 
 ```{figure} est_fig11.png
 ---
-height: 250px
+height: 300px
 name: est_fig11
 align : center
 ---
@@ -330,7 +333,7 @@ Con el Bode anterior dibujamos el mapeo de $G(\mathscr{C}_1)$
 
 ```{figure} est_fig12.png
 ---
-height: 200px
+height: 250px
 name: est_fig12
 align : center
 ---
@@ -347,7 +350,7 @@ Agregamos a lo que dibujamos para frecuencias positivas $\omega>0$ a partir del 
 
 ```{figure} est_fig13.png
 ---
-height: 200px
+height: 250px
 name: est_fig13
 align : center
 ---
@@ -355,6 +358,7 @@ Nyquist de $G(s)$ sin cerrar
 ```
 
 Analizamos el cierre por infinito, para lo que usaremos el contorno $\mathscr{C}_3$, que se parametriza como:
+
 $$
 \mathscr{C}_3: s=\rho e^{j\theta} \text{ con } \rho \longrightarrow 0 \text{ y } -\frac{\pi}{2}<\theta<\frac{\pi}{2} \text{ pasando por }\theta = 0
 $$
@@ -391,7 +395,7 @@ Con lo anterior podemos cerrar el diagrama como se ve en {numref}`est_fig14`
 
 ```{figure} est_fig14.png
 ---
-height: 200px
+height: 250px
 name: est_fig14
 align : center
 ---
@@ -410,7 +414,7 @@ Validamos lo anterior haciendo el lugar de las raíces asintótico para $k>0$. E
 
 ```{figure} est_fig15.png
 ---
-height: 200px
+height: 250px
 name: est_fig15
 align : center
 ---
@@ -425,14 +429,14 @@ $$
 
 ```{figure} est_fig16.png
 ---
-height: 200px
+height: 250px
 name: est_fig16
 align : center
 ---
 Asíntota de Nyquist
 ```
 
-Todavía quedan algunas preguntas por responder sobre este problema. ¿Cómo cierra el Nyquist si incluimos el polo en la curva que encierra el semi-plano derecho? y ¿Qué sucede con la estabilidad para $k<0$?
+Todavía quedan algunas preguntas por responder sobre este ejemplo. ¿Cómo cierra el Nyquist si incluimos el polo en la curva que encierra el semi-plano derecho? y ¿Qué sucede con la estabilidad para $k<0$?
 
 Al incluir el polo dentro de la curva que encierra el semi-plano derecho, ahora los polos de $G(s)$ en RHP son $P=1$. Realizamos el diagrama de Nyquist para ese caso y contamos las vueltas a -1, por lo que $N=-1$, con lo que $Z=N+P=0$ esto es para todo $k>0$.
 
@@ -449,7 +453,7 @@ La estabilidad para $k<0$ se puede analizar de dos formas, por un lado se puede 
 
 ```{figure} est_fig16_2.png
 ---
-height: 200px
+height: 250px
 name: est_fig16_2
 align : center
 ---
@@ -462,7 +466,7 @@ Por otro lado, lo que suele ser mas práctico, es plantear "cambiar la escala de
 
 ```{figure} est_fig16_3.png
 ---
-height: 200px
+height: 350px
 name: est_fig16_3
 align : center
 ---
@@ -488,7 +492,7 @@ Gráficamente es:
 
 ```{figure} est_fig17.png
 ---
-height: 200px
+height: 400px
 name: est_fig17
 align : center
 ---
@@ -510,10 +514,7 @@ $$
 para encontrar el margen de ganancia hay que determinar donde corta el Nyquist el eje real, esto es
 
 $$
-L(j\omega) =
-\left.\frac{6}{(s^2+2s+2)(s+2)}\right|_{s\rightarrow j\omega}
-=
-\frac{6[4(1-\omega^2)-j\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
+L(j\omega) = \left.\frac{6}{(s^2+2s+2)(s+2)}\right|_{s\rightarrow j\omega}=\frac{6[4(1-\omega^2)-j\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
 $$
 
 es decir,
@@ -548,7 +549,7 @@ Gráficamente en el diagrama de Bode los margenes de estabilidad, el margen de g
 
 ```{figure} est_fig18.png
 ---
-height: 200px
+height: 300px
 name: est_fig18
 align : center
 ---
