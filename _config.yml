@@ -34,7 +34,7 @@ html:
   google_analytics_id       : ""  # A GA id that can be used to track book views.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
 
-  baseurl: "https://gonmolina.github.io/CCyVE_book"
+  baseurl: "https://juanodecc.github.io/CCyVE_book"
 
   comments:
     utterances:
