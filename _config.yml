@@ -1,9 +1,9 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Diseño y Ajuste de Sistemas de Control
+title: Sistemas de Control
 author: Somebody
-logo: ccyve_sources/sala_de_control.png
+logo: ceaten_sources/sala_de_control.png
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -11,8 +11,8 @@ latex:
     targetname: book.tex
 
 # Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
+#bibtex_bibfiles:
+#  - references.bib
 
 launch_buttons:
   notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"
@@ -20,7 +20,7 @@ launch_buttons:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/gonmolina/CCyVE_book  # Online location of your book
+  url: https://github.com/juanodecc/ceaten_book  # Online location of your book
   # path_to_book: book  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
@@ -65,4 +65,5 @@ sphinx:
         .py:
             - jupytext.reads
             - fmt: py
-   - fmt: py
+execute:
+  execute_notebooks: cache

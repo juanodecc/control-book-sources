@@ -12,7 +12,7 @@ dependencies:
   - control
   - sympy
   - tornado
-  - jupyter-book
+  - jupyter-book<2
   - jupytext
   
   

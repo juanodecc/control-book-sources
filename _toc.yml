@@ -1,5 +1,5 @@
 format: jb-book
-root: ccyve_sources/intro
+root: ceaten_sources/intro
 parts:
 - caption: "Introducción a Python"
   chapters:
