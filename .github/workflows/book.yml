@@ -17,16 +17,17 @@ jobs:
       with:
         submodules: recursive
     
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v5
+    - name: Setup Miniconda
+      uses: conda-incubator/setup-miniconda@v3
       with:
+        activate-environment: book
+        environment-file: environment.yml
         python-version: 3.11
-    
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt || pip install jupyter-book numpy matplotlib pandas scipy control sympy tornado jupytext slycot
-        
+        auto-activate-base: false
+        use-mamba: true
+
     - name: Build the book
+      shell: bash -el {0}
       run: |
         jupyter-book build .
         
