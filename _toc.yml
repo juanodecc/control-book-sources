@@ -8,7 +8,7 @@ parts:
   - file: sources/notebooks_sources/intro_python/Extra_Python
   - file: sources/notebooks_sources/intro_python/Intro-Matplotlib
   - file: sources/notebooks_sources/intro_python/intro_sympy
-- caption: "Se\xF1ales, sistemas y modelos"
+- caption: "Sistemas Dinámicos y Modelado"
   chapters:
   - file: sources/notebooks_sources/modulo1/intro_sys_sen/intro_sis_y_sen
   - file: sources/notebooks_sources/modulo1/laplace/transformada_laplace_python_opcional
