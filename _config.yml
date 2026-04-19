@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Sistemas de Control
-author: Somebody
+author: Instituto Balseiro - CEATEN
 logo: ceaten_sources/sala_de_control.png
 
 # Define the name of the latex output file for PDF builds
@@ -23,6 +23,10 @@ repository:
   url: https://github.com/juanodecc/ceaten_book  # Online location of your book
   # path_to_book: book  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
+repository:
+  url: https://github.com/juanodecc/control-book-sources
+  path_to_book: notebooks_sources
+  branch: master
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
