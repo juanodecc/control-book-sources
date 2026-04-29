@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Estabilidad &#8212; Sistemas de Control</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "juanodecc/ceaten_book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="../../../_static/translations.js?v=efdbd0b9"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks_sources/modulo2/estabilidad/estabilidad';</script>
+    <link rel="canonical" href="https://juanodecc.github.io/ceaten_book/notebooks_sources/modulo2/estabilidad/estabilidad.html" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../ceaten_sources/intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/sala_de_control.png" class="logo__image only-light" alt="Sistemas de Control - Home"/>
+    <img src="../../../_static/sala_de_control.png" class="logo__image only-dark pst-js-only" alt="Sistemas de Control - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../ceaten_sources/intro.html">
+                    Material de la materia Elementos de Control
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción a Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/gu%C3%ADa_instalaci%C3%B3n/guia_de_instalacion.html">Guía de instalación de las herramientas computacionales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/intro_python/Introducci%C3%B3n%20a%20los%20notebooks%20de%20Jupyter.html">Introducción a los cuadernos de Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/intro_python/Extra_Python.html">Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/intro_python/Intro-Matplotlib.html">Figuras en Python - MATPLOTLIB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/intro_python/intro_sympy.html">Introducción a SymPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sistemas Dinámicos y Modelado</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/intro_sys_sen/intro_sis_y_sen.html">Definiciones de Sistemas y Señales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/laplace/transformada_laplace_python_opcional.html">Transformada de Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/laplace/funcion_transferencia.html">Función transferencia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/diagrama_bloques/diagrama_de_bloques.html">Diagramas de bloques</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/espacio_estado/espacio_de_estados.html">Representación de sistemas dinámicos en espacio de estados</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/espacio_estado/modelado_ss.html">Modelado en espacio de estados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/linealizacion/linealizacion.html">Linealización de sistemas no-lineales</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/ejemplos_sistemas/ejemplos_sistemas.html">Ejemplos de modelos de sistemas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/ejemplos_sistemas/resorte_no_lineal.html">Sistema masa resorte amortiguador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/ejemplos_sistemas/CineticaPuntual.html">Ecuaciones de Cinética Puntual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/ejemplos_sistemas/Nonlinear%20CSTR.html">Sistema CSTR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sources/notebooks_sources/modulo1/ejemplos_sistemas/Ejemplo_Presa_Depredador.html">Sistema presa depredador (Lotka-Volterra)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis de la respuesta temporal</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo2/estabilidad/estabilidad.html">Estabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo2/respuesta%20temporal/Respuesta%20Temporal.html">Respuesta temporal de sistemas dinámicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo2/polos%20y%20ceros%20adicionales/Efecto%20Polos%20y%20Ceros%20Adicionales.html">Efecto de los polos adicionales y de los ceros</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis de estado estacionario</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo3/realimentacion/carateristicas%20de%20la%20realimentacion.html">Características de la realimentación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo3/sensibilidad/Sensibilidad.html">Sensibilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo3/errores/Errores.html">Errores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lugar de las raíces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo4/lugar%20de%20las%20raices.html">Lugar de las raíces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo4/Pasos%20para%20el%20trazado.html">Pasos para trazar el lugar geométrico de las raíces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo4/Lugar%20de%20la%20raices%20con%20Python.html">Lugar de las raíces usando Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Respuesta en frecuencia</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_frec/respuesta_frecuencial.html">Respuesta Frecuencial de Sistemas lineales y SISO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia.html">Estabilidad en Frecuencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Diseño de compensadores</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo5/compensadores.html">Compensadores de adelanto y de retraso de fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo5/problema_levitador.html">Problema de levitador magnético</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo5/tipo1_lead.html">Problema con sistema de tipo 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo5/lead_lag_design.html">Ecuaciones útiles para el diseño del Lead por análisis en frecuencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Control Moderno</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/polos_ceros_EE.html">Polos y Ceros en los modelos de espacio de estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/formas_canonicas.html">Formas canónicas de un espacio de estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/transformacion_formas_canonicas.html">Transformación lineal del espacio de estado</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/ctrb_obsv.html">Análisis de los sistemas en su forma de espacio de estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/referencia.html">Inserción de referencias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/LSR.html">Elección de la ubicación de los polos a lazo cerrado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/estimadores.html">Diseño de estimadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/ejemplo_A_ve_motor_cc.html">Diseño para un motor de continua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/ejemplo_B_ve_atitud_satelite.html">Diseño del sistema de control del atitud de un satélite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sources/notebooks_sources/modulo_ve/ejemplo_C_ve_pendulo_invertido.html">Diseño del sistema de control del pédulo invertido</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/juanodecc/control-book-sources/blob/master/notebooks_sources/notebooks_sources/modulo2/estabilidad/estabilidad.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/juanodecc/control-book-sources" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/juanodecc/control-book-sources/edit/master/notebooks_sources/notebooks_sources/modulo2/estabilidad/estabilidad.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/juanodecc/control-book-sources/issues/new?title=Issue%20on%20page%20%2Fnotebooks_sources/modulo2/estabilidad/estabilidad.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks_sources/modulo2/estabilidad/estabilidad.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Descargar archivo de cuaderno"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../../_sources/notebooks_sources/modulo2/estabilidad/estabilidad.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Estabilidad</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidad-con-entrada-y-salida-acotada-bibo-estabilidad">Estabilidad con entrada y salida acotada (BIBO ESTABILIDAD)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-bibo-estabilidad">Definición de BIBO estabilidad</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primeras-nociones-de-bibo-estabilidad-para-sistemas-lineales-e-invariantes-en-el-tiempo">Primeras nociones de BIBO estabilidad para sistemas lineales e invariantes en el tiempo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusión</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalizando-matematicamente-bibo-estabilidad">Formalizando matemáticamente BIBO estabilidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condicion-para-bibo-estabilidad">Condición para BIBO estabilidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corolario">Corolario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-aplicacion-de-las-condiciones-de-bibo-estabilidad">Ejemplo de aplicación de las condiciones de BIBO estabilidad</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="estabilidad">
+<h1>Estabilidad<a class="headerlink" href="#estabilidad" title="Link to this heading">#</a></h1>
+<p>El concepto de estabilidad está relacionado con la respuesta a un estímulo apropiado del sistema a analizar. Estudiaremos aquí el caso de sistemas lineales e invariantes en el tiempo.</p>
+<section id="estabilidad-con-entrada-y-salida-acotada-bibo-estabilidad">
+<h2>Estabilidad con entrada y salida acotada (BIBO ESTABILIDAD)<a class="headerlink" href="#estabilidad-con-entrada-y-salida-acotada-bibo-estabilidad" title="Link to this heading">#</a></h2>
+<section id="definicion-de-bibo-estabilidad">
+<h3>Definición de BIBO estabilidad<a class="headerlink" href="#definicion-de-bibo-estabilidad" title="Link to this heading">#</a></h3>
+<p>Se dice que un sistema tiene estabilidad de entrada y salida acotada si toda  entrada acotada da lugar a una salida acotada.</p>
+</section>
+</section>
+<section id="primeras-nociones-de-bibo-estabilidad-para-sistemas-lineales-e-invariantes-en-el-tiempo">
+<h2>Primeras nociones de BIBO estabilidad para sistemas lineales e invariantes en el tiempo<a class="headerlink" href="#primeras-nociones-de-bibo-estabilidad-para-sistemas-lineales-e-invariantes-en-el-tiempo" title="Link to this heading">#</a></h2>
+<p>Estabilidad y localización de los polos con la función transferencia de la forma:</p>
+<div class="math notranslate nohighlight">
+\[H(s) = K\frac{s^m +b_{m-1}s^{m-1}+\cdots+b_0}{s^n +a_{n-1}s^{n-1}+\cdots+a_0}=\frac{N(s)}{D(s)}\]</div>
+<p>Buscamos condiciones sobre la localización de los polos de <span class="math notranslate nohighlight">\(H(s)\)</span> en el plano complejo que aseguren la BIBO estabilidad del sistema.</p>
+<ul class="simple">
+<li><p>Si imponemos la condición de BIBO estabilidad debe ser: <span class="math notranslate nohighlight">\(m\leq n\)</span> función transferencia propia ya que si no fuera el caso, efectuando el cociente de polinomios <span class="math notranslate nohighlight">\(\frac{N(s)}{D(s)}\)</span>, tendríamos:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[H(s)=c_{m-n}s^{m-n}+\cdots+c_1s+c_0+\frac{\tilde{N}(s)}{D(s)}\]</div>
+<p>por lo que si le aplicamos un escalón por ejemplo</p>
+<div class="math notranslate nohighlight">
+\[U(s)=\frac{1}{s}\]</div>
+<p>la correspondiente respuesta tendrá un término <span class="math notranslate nohighlight">\(c_1\)</span>, que corresponde a <span class="math notranslate nohighlight">\(c_1 \delta(t)\)</span> en el dominio temporal que no es acotada.</p>
+<ul class="simple">
+<li><p>Asumimos entonces que <span class="math notranslate nohighlight">\(H(s)\)</span> es propia y la expresamos como:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[H(s) = \dfrac{N(s)}{D(s)}=K\dfrac{\prod_{l=1}^m (s-z_l)}{\prod_{l=1}^n (s-p_l)}; m\leq n\]</div>
+<p>donde por simplicidad hemos supuesto que los polos son reales y simples. La respuesta a un escalón unitario <span class="math notranslate nohighlight">\(U(s) = \dfrac{1}{s}\)</span> será:</p>
+<div class="math notranslate nohighlight">
+\[Y(s) = \frac{K}{s}\dfrac{\prod_{l=1}^m (s-z_l)}{\prod_{l=1}^n (s-p_l)}\]</div>
+<p>Expandiendo por fracciones simples se obtiene:</p>
+<div class="math notranslate nohighlight">
+\[Y(s)= \frac{K_0}{s} + \sum_{l=1}^{n} \frac{K_l}{s-p_l}\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[K_0 = \lim_{s\rightarrow 0} sY(s)\]</div>
+<p>y</p>
+<div class="math notranslate nohighlight">
+\[ K_l = \lim_{s\rightarrow p_l} (s-p_l)Y(s) \qquad l=1,\ldots,n\]</div>
+<p>Tomando la Transformada Inversa de Laplace se obtiene:</p>
+<div class="math notranslate nohighlight">
+\[ y(t) =  K_0 + \sum_{l=1}^{n} K_l e^{p_lt}, \quad t\geq 0\]</div>
+<p>Vemos que para que la salida permanezca acotada los polos <span class="math notranslate nohighlight">\(p_l\)</span> deberán ser negativos.</p>
+<ul class="simple">
+<li><p>Si consideramos ahora la posibilidad de tener polos complejos, los mismos deberán aparecer como <em>pares polos complejos conjugados</em>, por lo que la respuesta a un escalón unitario será de la forma:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ y(t) =  K_0 + \sum_{l=1}^{r} K_l e^{p_lt} + \sum_{l=1}^q,K_{1l}e^{\sigma_lt}\cos\omega_lt + K_{2l}e^{\sigma_lt}\sin\omega_lt \quad t\geq 0\]</div>
+<p>Donde hemos supuesto que hay «r» polos reales simples y q pares de polos complejos conjugados <span class="math notranslate nohighlight">\(()\sigma_l+j\omega_l\)</span>.</p>
+<p>En este caso vemos que la condición que la salida sea permanezca acotada debe ser:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p_l \leq 0\)</span> polos reales negativos</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_l \leq 0\)</span> polos complejos conjugados con parte real negativa.</p></li>
+<li><p>Un razonamiento similar se puede hacer para el caso de tener polos reales y/o complejos con multiplicidad.</p></li>
+</ul>
+<section id="conclusion">
+<h3>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>Una condición necesaria y suficiente para la BIBO estabilidad es que los polos estén ubicados en el semiplano izquierdo abierto (polos con parte real negativa)</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../../_images/bibo_plano_s.png"><img alt="condición de estabilidad" src="../../../_images/bibo_plano_s.png" style="width: 450px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Zona de estabilidad de en el plano <span class="math notranslate nohighlight">\(s\)</span></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="formalizando-matematicamente-bibo-estabilidad">
+<h2>Formalizando matemáticamente BIBO estabilidad<a class="headerlink" href="#formalizando-matematicamente-bibo-estabilidad" title="Link to this heading">#</a></h2>
+<p>Observemos que esta definición es independiente de lo que ocurra dentro del sistema: una variable interna del sistema puede crecer ilimitadamente según esta definición.</p>
+<p>Comprobar esta propiedad es fácil utilizando la propiedad de convolución:</p>
+<p>Llamando <span class="math notranslate nohighlight">\(u(t)\)</span> a la entrada, <span class="math notranslate nohighlight">\(y(t)\)</span> la salida y <span class="math notranslate nohighlight">\(h(t)\)</span> la respuesta a un impulso, tenemos que la salida es:</p>
+<div class="math notranslate nohighlight">
+\[y(t)=\int_{-\infty}^{\infty}h(\tau)u(t-\tau)d\tau\]</div>
+<p>Si <span class="math notranslate nohighlight">\(u(t)\)</span> es acotada, entonces existe <span class="math notranslate nohighlight">\(M\)</span> tal que <span class="math notranslate nohighlight">\(|u|\le M &lt; \infty\)</span> y entonces la salida está acotada por:</p>
+<div class="math notranslate nohighlight">
+\[|y(t)|=\left|\int_{-\infty}^{\infty} h(\tau) u(t-\tau) d\tau\right| \leq \int_{-\infty}^{\infty} |h(\tau)||u(t-\tau)|d\tau \leq M \int_{-\infty}^{\infty}|h(\tau)|d\tau\]</div>
+<p>Por lo tanto, la salida <span class="math notranslate nohighlight">\(y(t)\)</span> estará acotada si la integral</p>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^{\infty}|h(\tau)|d\tau\]</div>
+<p>es acotada.</p>
+<p>Por otro lado, supongamos que esta integral es no acotada, y consideramos la entrada acotada <span class="math notranslate nohighlight">\(u(t-\tau)\)</span> = +1, si <span class="math notranslate nohighlight">\(h(t) &gt; 0\)</span>, y <span class="math notranslate nohighlight">\(u(t-\tau) = -1\)</span>, si <span class="math notranslate nohighlight">\(h(t) &lt; 0\)</span>. En este caso:</p>
+<div class="math notranslate nohighlight">
+\[y(t)=\int_{-\infty}^{\infty}|h(\tau)|d\tau\]</div>
+<p>y por lo tanto la salida es no acotada. O sea que si la integral es no acotada, el sistema no es estable.</p>
+<section id="condicion-para-bibo-estabilidad">
+<h3>Condición para BIBO estabilidad<a class="headerlink" href="#condicion-para-bibo-estabilidad" title="Link to this heading">#</a></h3>
+<p>El sistema con respuesta al impulso <span class="math notranslate nohighlight">\(h(t)\)</span> es estable con entrada y salida acotada si, y solo si, la integral</p>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^{\infty}\left|h(\tau)\right|d\tau\]</div>
+<p>es acotada.</p>
+</section>
+<section id="corolario">
+<h3>Corolario<a class="headerlink" href="#corolario" title="Link to this heading">#</a></h3>
+<p>Un sistema LTI es BIBO estable si y solo si su función transferencia tiene todos los polos del lazo izquierdo del plano <span class="math notranslate nohighlight">\(s\)</span>, sin incluir el eje.</p>
+</section>
+<section id="ejemplo-de-aplicacion-de-las-condiciones-de-bibo-estabilidad">
+<h3>Ejemplo de aplicación de las condiciones de BIBO estabilidad<a class="headerlink" href="#ejemplo-de-aplicacion-de-las-condiciones-de-bibo-estabilidad" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../../../_images/circRC.png"><img alt="Circuito RC Serie" src="../../../_images/circRC.png" style="width: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Circuito R-C</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Analicemos la estabilidad del circuito eléctrico que muestra la figura anterior.</p>
+<p>Para este sistema eléctrico tenemos que el capacitor hace de un integrador puro, y por lo tanto la respuesta al impulso será el escalón unitario (si C = 1).</p>
+<p>Por lo tanto la integral será:</p>
+<div class="math notranslate nohighlight">
+\[\int_{-\infty}^{\infty}\left|h(\tau)\right|d\tau=\int_{0}^{\infty}d\tau\]</div>
+<p>y esta integral es no acotada, por lo tanto según esta definición de estabilidad, este sistema no es estable.</p>
+<p>Notar que la función de transferencia de este sistema tiene un polo en el origen (en el eje imaginario): <span class="math notranslate nohighlight">\(G(s) = \frac{1}{s}\)</span>.</p>
+<p>Si un sistema invariante en el tiempo tiene cualquier polo en el eje imaginario o en el semiplano derecho, la respuesta no será acotada y para cualquier entrada acotada.</p>
+<div class="important admonition">
+<p class="admonition-title">Condición de estabilidad</p>
+<p>Si todos los polos están dentro del semiplano izquierdo sin incluir el eje imaginario, entonces la respuesta será estable con entrada y salida acotadas. Por lo tanto, para sistemas invariantes en el tiempo (estacionarios), podemos utilizar la ubicación de los polos de la función de transferencia del sistema para verificar su estabilidad.</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks_sources/modulo2/estabilidad"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidad-con-entrada-y-salida-acotada-bibo-estabilidad">Estabilidad con entrada y salida acotada (BIBO ESTABILIDAD)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-bibo-estabilidad">Definición de BIBO estabilidad</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primeras-nociones-de-bibo-estabilidad-para-sistemas-lineales-e-invariantes-en-el-tiempo">Primeras nociones de BIBO estabilidad para sistemas lineales e invariantes en el tiempo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusión</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalizando-matematicamente-bibo-estabilidad">Formalizando matemáticamente BIBO estabilidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condicion-para-bibo-estabilidad">Condición para BIBO estabilidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corolario">Corolario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-aplicacion-de-las-condiciones-de-bibo-estabilidad">Ejemplo de aplicación de las condiciones de BIBO estabilidad</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Instituto Balseiro - CEATEN
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
