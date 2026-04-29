@@ -1,0 +1,1137 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Estabilidad en Frecuencia &#8212; Sistemas de Control</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "juanodecc/ceaten_book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="../../../../../_static/translations.js?v=efdbd0b9"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sources/sources/notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia';</script>
+    <link rel="canonical" href="https://juanodecc.github.io/ceaten_book/sources/sources/notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia.html" />
+    <link rel="index" title="Índice" href="../../../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../ceaten_sources/intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/sala_de_control.png" class="logo__image only-light" alt="Sistemas de Control - Home"/>
+    <img src="../../../../../_static/sala_de_control.png" class="logo__image only-dark pst-js-only" alt="Sistemas de Control - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../ceaten_sources/intro.html">
+                    Material de la materia Elementos de Control
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción a Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/gu%C3%ADa_instalaci%C3%B3n/guia_de_instalacion.html">Guía de instalación de las herramientas computacionales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/intro_python/Introducci%C3%B3n%20a%20los%20notebooks%20de%20Jupyter.html">Introducción a los cuadernos de Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/intro_python/Extra_Python.html">Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/intro_python/Intro-Matplotlib.html">Figuras en Python - MATPLOTLIB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/intro_python/intro_sympy.html">Introducción a SymPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sistemas Dinámicos y Modelado</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/intro_sys_sen/intro_sis_y_sen.html">Definiciones de Sistemas y Señales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/laplace/transformada_laplace_python_opcional.html">Transformada de Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/laplace/funcion_transferencia.html">Función transferencia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/diagrama_bloques/diagrama_de_bloques.html">Diagramas de bloques</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../notebooks_sources/modulo1/espacio_estado/espacio_de_estados.html">Representación de sistemas dinámicos en espacio de estados</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/espacio_estado/modelado_ss.html">Modelado en espacio de estados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/linealizacion/linealizacion.html">Linealización de sistemas no-lineales</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/ejemplos_sistemas.html">Ejemplos de modelos de sistemas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/resorte_no_lineal.html">Sistema masa resorte amortiguador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/CineticaPuntual.html">Ecuaciones de Cinética Puntual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/Nonlinear%20CSTR.html">Sistema CSTR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/Ejemplo_Presa_Depredador.html">Sistema presa depredador (Lotka-Volterra)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis de la respuesta temporal</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo2/estabilidad/estabilidad.html">Estabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo2/respuesta%20temporal/Respuesta%20Temporal.html">Respuesta temporal de sistemas dinámicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo2/polos%20y%20ceros%20adicionales/Efecto%20Polos%20y%20Ceros%20Adicionales.html">Efecto de los polos adicionales y de los ceros</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis de estado estacionario</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo3/realimentacion/carateristicas%20de%20la%20realimentacion.html">Características de la realimentación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo3/sensibilidad/Sensibilidad.html">Sensibilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo3/errores/Errores.html">Errores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lugar de las raíces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo4/lugar%20de%20las%20raices.html">Lugar de las raíces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo4/Pasos%20para%20el%20trazado.html">Pasos para trazar el lugar geométrico de las raíces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo4/Lugar%20de%20la%20raices%20con%20Python.html">Lugar de las raíces usando Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Respuesta en frecuencia</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_frec/respuesta_frecuencial.html">Respuesta Frecuencial de Sistemas lineales y SISO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia.html">Estabilidad en Frecuencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Diseño de compensadores</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo5/compensadores.html">Compensadores de adelanto y de retraso de fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo5/problema_levitador.html">Problema de levitador magnético</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo5/tipo1_lead.html">Problema con sistema de tipo 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo5/lead_lag_design.html">Ecuaciones útiles para el diseño del Lead por análisis en frecuencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Control Moderno</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/polos_ceros_EE.html">Polos y Ceros en los modelos de espacio de estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/formas_canonicas.html">Formas canónicas de un espacio de estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/transformacion_formas_canonicas.html">Transformación lineal del espacio de estado</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/ctrb_obsv.html">Análisis de los sistemas en su forma de espacio de estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/referencia.html">Inserción de referencias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/LSR.html">Elección de la ubicación de los polos a lazo cerrado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/estimadores.html">Diseño de estimadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/ejemplo_A_ve_motor_cc.html">Diseño para un motor de continua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/ejemplo_B_ve_atitud_satelite.html">Diseño del sistema de control del atitud de un satélite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/ejemplo_C_ve_pendulo_invertido.html">Diseño del sistema de control del pédulo invertido</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/juanodecc/control-book-sources/blob/master/notebooks_sources/sources/sources/notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/juanodecc/control-book-sources" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/juanodecc/control-book-sources/edit/master/notebooks_sources/sources/sources/notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/juanodecc/control-book-sources/issues/new?title=Issue%20on%20page%20%2Fsources/sources/notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../../_sources/sources/sources/notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Descargar archivo de cuaderno"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../../../../_sources/sources/sources/notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Estabilidad en Frecuencia</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-estabilidad-de-nyquist">Criterio de estabilidad de Nyquist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principio-de-argumento">Principio de argumento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapeo-de-contornos">Mapeo de contornos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-estabilidad">Criterio de estabilidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-nyquist-asintotico">Diagrama de Nyquist asintótico</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-diagrama-de-nyquist-para-determinar-la-estabilidad">Ejemplo: Diagrama de Nyquist para determinar la estabilidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#otro-ejemplo-con-cierre-por-infty">Otro ejemplo: Con cierre por <span class="math notranslate nohighlight">\(\infty\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margen-de-fase-mf-y-margen-de-ganancia-mg">Margen de Fase (MF) y Margen de Ganancia (MG)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-margen-de-ganancia-g-m">Definición de Margen de Ganancia <span class="math notranslate nohighlight">\(G_M\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-margen-de-fase-phi-m">Definición de Margen de Fase  <span class="math notranslate nohighlight">\(\Phi_M\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-calculo-de-margenes-de-estabilidad-phi-m-y-g-m">Ejemplo: Cálculo de Margenes de estabilidad <span class="math notranslate nohighlight">\(\Phi_M\)</span> y <span class="math notranslate nohighlight">\(G_M\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margenes-de-estabilidad-en-diagramas-de-bode">Margenes de estabilidad en diagramas de Bode</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="estabilidad-en-frecuencia">
+<h1>Estabilidad en Frecuencia<a class="headerlink" href="#estabilidad-en-frecuencia" title="Link to this heading">#</a></h1>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
+<p>Considerando el sistema a lazo cerrado</p>
+<figure class="align-center" id="est-fig1">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig110.png"><img alt="../../../../../_images/est_fig110.png" src="../../../../../_images/est_fig110.png" style="height: 150px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Diagrama de Nyquist de <span class="math notranslate nohighlight">\(L(j\omega)\)</span></span><a class="headerlink" href="#est-fig1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>con función de transferencia:</p>
+<div class="math notranslate nohighlight">
+\[
+T(s)=\frac{Y(s)}{R(s)}= \frac{kG(s)}{1+kG(s)H(s)}= \frac{kG(s)}{1+L(s)}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(L(s)\)</span> es la función de transferencia de lazo
+o lo que es lo mismo</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{matrix}
+T(j\omega)=\frac{kG(j\omega)}{1+kG(j\omega)H(j\omega)}= \frac{kG(j\omega)}{\underbrace{1+L(j\omega)}_{\text{polos a LC}}} &amp; \Longrightarrow &amp; 1+L(j\omega)=0
+\end{matrix}
+\]</div>
+<p>de lo anterior, con <span class="math notranslate nohighlight">\(k&gt;0\)</span>, se deduce la condición de estabilidad cuando:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{matrix}
+|kG(j\omega)H(j\omega)|&lt;1 &amp; \text{ a } &amp; \angle{G(j\omega)H(j\omega)}=-180º
+\end{matrix}
+\]</div>
+<p>esto es para sistemas que cruzan solo una vez la magnitud <span class="math notranslate nohighlight">\(||=1\)</span> (son los casos comunes)</p>
+<p>Hay sistemas que al incrementar la ganancia pueden pasar de inestables a estables, en tal caso la condición de estabilidad es:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{matrix}
+|kG(j\omega)H(j\omega)|&gt;1 &amp; \text{ y } &amp; \angle{G(j\omega)H(j\omega)}=-180º
+\end{matrix}
+\]</div>
+<p>Esto es, cuando cortan más de una vez el eje <span class="math notranslate nohighlight">\(||_{dB}=0\)</span>. Para despejar dudas es recomendable hacer un diagrama del lugar de las raíces y verificar la estabilidad, o es posible despejar las dudas al hacer un tratamiento más riguroso usando el <code class="docutils literal notranslate"><span class="pre">criterio</span> <span class="pre">de</span> <span class="pre">estabilidad</span> <span class="pre">de</span> <span class="pre">Nyquist</span></code>.</p>
+</section>
+<section id="criterio-de-estabilidad-de-nyquist">
+<h2>Criterio de estabilidad de Nyquist<a class="headerlink" href="#criterio-de-estabilidad-de-nyquist" title="Link to this heading">#</a></h2>
+<p>A partir de una <code class="docutils literal notranslate"><span class="pre">representación</span> <span class="pre">polar</span></code> de la función de transferencia armónica del sistema:</p>
+<div class="math notranslate nohighlight">
+\[
+L(j\omega) \equiv L(s)|_{s=j\omega}= |L(j\omega)|e^{j\phi(\omega)}
+\]</div>
+<p>con <span class="math notranslate nohighlight">\(\phi(\omega)=\angle{L(j\omega)}\)</span>, donde:</p>
+<figure class="align-center" id="est-fig2">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig22.png"><img alt="../../../../../_images/est_fig22.png" src="../../../../../_images/est_fig22.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Diagrama de Nyquist de <span class="math notranslate nohighlight">\(L(j\omega)\)</span></span><a class="headerlink" href="#est-fig2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>El criterio de estabilidad permite determinar la estabilidad del sistema en lazo cerrado a partir del diagrama de Nyquist a lazo abierto de <span class="math notranslate nohighlight">\(L(j\omega)\)</span></p>
+<p>El criterio de estabilidad de Nyquist se basa en el principio del argumento del análisis complejo.</p>
+<section id="principio-de-argumento">
+<h3>Principio de argumento<a class="headerlink" href="#principio-de-argumento" title="Link to this heading">#</a></h3>
+<p>El mapeo de un contorno cerrado de una función compleja solo puede encerrar el origen, si el contorno contiene una singularidad (lo que nosotros llamamos, polo o cero) de la función.</p>
+<figure class="align-center" id="est-fig3">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig32.png"><img alt="../../../../../_images/est_fig32.png" src="../../../../../_images/est_fig32.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Diagrama de Nyquist de <span class="math notranslate nohighlight">\(L(j\omega)\)</span></span><a class="headerlink" href="#est-fig3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="mapeo-de-contornos">
+<h3>Mapeo de contornos<a class="headerlink" href="#mapeo-de-contornos" title="Link to this heading">#</a></h3>
+<p>El mapeo del contorno de una función de transferencia <span class="math notranslate nohighlight">\(L(s)\)</span> es el camino cerrado descrito por <span class="math notranslate nohighlight">\(L(s)\)</span> en el plano complejo, cuando la variable <span class="math notranslate nohighlight">\(s\)</span> recorre un contorno ( o camino) cerrado en el plano complejo «<span class="math notranslate nohighlight">\(s\)</span>»</p>
+<p>Supongamos el ejemplo genérico:</p>
+<div class="math notranslate nohighlight">
+\[
+L_1(s)= k \frac{(s-z_1)(s-z_2)}{(s-p_1)(s-p_2)}
+\]</div>
+<figure class="align-center" id="est-fig4">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig42.png"><img alt="../../../../../_images/est_fig42.png" src="../../../../../_images/est_fig42.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Diagrama de Nyquist de <span class="math notranslate nohighlight">\(L_1(j\omega)\)</span></span><a class="headerlink" href="#est-fig4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha \equiv \angle{L_1(s_0)}= \theta_1+\theta_2+\phi_1+\phi_2
+\]</div>
+<p>cuando «<span class="math notranslate nohighlight">\(s\)</span>» recorre la curva <span class="math notranslate nohighlight">\(\mathscr{C}_1\)</span> en sentido horario, el ángulo <span class="math notranslate nohighlight">\(\alpha\)</span> de <span class="math notranslate nohighlight">\(L_1(s)\)</span> cambia, pero no hay un cambio neto de <span class="math notranslate nohighlight">\(360º\)</span> siempre que no haya un polo o cero de <span class="math notranslate nohighlight">\(L_1(s)\)</span> en el interior de <span class="math notranslate nohighlight">\(\mathscr{C}_1\)</span>. En este caso, el mapeo del contorno de <span class="math notranslate nohighlight">\(L_1(s)\)</span> no incluye el origen.</p>
+<p>consideremos ahora <span class="math notranslate nohighlight">\(L_2(s)\)</span> como se muestra:</p>
+<figure class="align-center" id="est-fig5">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig52.png"><img alt="../../../../../_images/est_fig52.png" src="../../../../../_images/est_fig52.png" style="height: 150px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Mapeo de la curva <span class="math notranslate nohighlight">\(\mathscr{C}_1\)</span> para <span class="math notranslate nohighlight">\(L_2(s)\)</span></span><a class="headerlink" href="#est-fig5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>En este caso como hay una singularidad de <span class="math notranslate nohighlight">\(L_2(s)\)</span> dentro del contorno <span class="math notranslate nohighlight">\(\mathscr{C}_1\)</span>. Cuando «<span class="math notranslate nohighlight">\(s\)</span>» recorre <span class="math notranslate nohighlight">\(\mathscr{C}_1\)</span> hay un cambio neto de <span class="math notranslate nohighlight">\(360º\)</span> en la fase <span class="math notranslate nohighlight">\(\phi_2\)</span> correspondiente a la singularidad dentro del contorno <span class="math notranslate nohighlight">\(\mathscr{C}_1\)</span> lo que hace que <span class="math notranslate nohighlight">\(\alpha\)</span> cambie <span class="math notranslate nohighlight">\(360º\)</span> esto significa que el mapeo encierra el origen.</p>
+<p>Vamos a analizar la ecuación característica, por ser la que define la ubicación de los polos del sistema a lazo cerrado:</p>
+<div class="math notranslate nohighlight">
+\[
+f(s) =1+ kG(s)H(s)= 1+ k L(s)=0
+\]</div>
+<p>por lo que para aplicar el principio del argumento usaremos el contorno que encierra todo el semi-plano derecho, es decir, la región de inestabilidad <span class="math notranslate nohighlight">\(\mathbb{C}^+\)</span></p>
+<figure class="align-center" id="est-fig6">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig62.png"><img alt="../../../../../_images/est_fig62.png" src="../../../../../_images/est_fig62.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Contorno que encierra <span class="math notranslate nohighlight">\(\mathbb{C}^+\)</span></span><a class="headerlink" href="#est-fig6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Entonces si el mapeo de <span class="math notranslate nohighlight">\(L(s)\)</span> encierra el origen si el contorno <span class="math notranslate nohighlight">\(\mathscr{C}\)</span> encierra un número de polos y ceros tal que:</p>
+<div class="math notranslate nohighlight">
+\[
+N-P \not= 0
+\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{matrix}
+N = \text{ número de ceros de }L(s)\text{ en el interior de }\mathscr{C}\\
+P = \text{ número de polos de }L(s)\text{ en el interior de }\mathscr{C}
+\end{matrix}
+\end{split}\]</div>
+<p>y cuando</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{matrix}
+N &gt; P &amp; \Longrightarrow &amp; \text{mapeo horario}\\
+P &lt; P &amp; \Longrightarrow &amp; \text{mapeo antihorario}
+\end{matrix}
+\end{split}\]</div>
+<p>Como queremos analizar <span class="math notranslate nohighlight">\(1+kL(s)=0\)</span> entonces es lo mismo que analizar <span class="math notranslate nohighlight">\(kL(s)=kG(s)H(s)\)</span> y como punto crítico usar el <span class="math notranslate nohighlight">\(-1\)</span>.</p>
+</section>
+</section>
+<section id="criterio-de-estabilidad">
+<h2>Criterio de estabilidad<a class="headerlink" href="#criterio-de-estabilidad" title="Link to this heading">#</a></h2>
+<p>Sea</p>
+<p><span class="math notranslate nohighlight">\(N\)</span> = número de vueltas alrededor de <span class="math notranslate nohighlight">\(-1\)</span> del diagrama de Nyquist de <span class="math notranslate nohighlight">\(kG(s)H(s)\)</span></p>
+<p><span class="math notranslate nohighlight">\(P\)</span> = número de polos a lazo abierto en el semi-plano derecho (RHP)</p>
+<p><span class="math notranslate nohighlight">\(Z\)</span> = número de polos a lazo cerrado en el RHP</p>
+<p>entonces</p>
+<div class="math notranslate nohighlight">
+\[
+Z=N + P
+\]</div>
+<p>para que el sistema sea estable debe ser <span class="math notranslate nohighlight">\(Z=0\)</span></p>
+</section>
+<section id="diagrama-de-nyquist-asintotico">
+<h2>Diagrama de Nyquist asintótico<a class="headerlink" href="#diagrama-de-nyquist-asintotico" title="Link to this heading">#</a></h2>
+<p><strong>Receta para dibujar un diagrama de Nyquist asintótico</strong> (No hace falta mas que esto para determinar la estabilidad):</p>
+<ol class="arabic simple">
+<li><p>Con la ayuda de un diagrama de Bode determinar la forma para <span class="math notranslate nohighlight">\(0 \leq \omega \leq \infty\)</span></p></li>
+<li><p>Evaluar el cierre del diagrama por infinito</p></li>
+<li><p>Contar las vueltas a -1</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+N = \left\{
+\begin{array}{l}
+&gt; 0 &amp; \Longrightarrow &amp;\text{Horario}\\
+&lt; 0 &amp;\Longrightarrow &amp;\text{Antihorario}
+\end{array}\right.
+\end{split}\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Determinar los polos de <span class="math notranslate nohighlight">\(L(s)\)</span> en el RHP, esto es P</p></li>
+<li><p>Calcular la estabilidad <span class="math notranslate nohighlight">\(\Longrightarrow ~ Z=N+P\)</span></p></li>
+</ol>
+<section id="ejemplo-diagrama-de-nyquist-para-determinar-la-estabilidad">
+<h3>Ejemplo: Diagrama de Nyquist para determinar la estabilidad<a class="headerlink" href="#ejemplo-diagrama-de-nyquist-para-determinar-la-estabilidad" title="Link to this heading">#</a></h3>
+<p>Supongamos un sistema con la siguiente función de transferencia de la que evaluaremos la estabilidad usando el criterio de Nyquist</p>
+<div class="math notranslate nohighlight">
+\[
+G(s)=\frac{1}{(s+1)^2}
+\]</div>
+<figure class="align-center" id="est-fig7-0">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig7_02.png"><img alt="../../../../../_images/est_fig7_02.png" src="../../../../../_images/est_fig7_02.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Curva de Nyquist en el plano-<span class="math notranslate nohighlight">\(s\)</span> de <span class="math notranslate nohighlight">\(G(s)\)</span></span><a class="headerlink" href="#est-fig7-0" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>Dibujamos un <strong>diagrama de Bode</strong> de la función de lazo <span class="math notranslate nohighlight">\(L(s)= kG(s)\)</span>, en este caso es suficiente con un Bode asintótico.</p></li>
+</ol>
+<figure class="align-center" id="est-fig7">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig72.png"><img alt="../../../../../_images/est_fig72.png" src="../../../../../_images/est_fig72.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Diagrama de Bode asintótico de <span class="math notranslate nohighlight">\(G(j\omega)\)</span></span><a class="headerlink" href="#est-fig7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Con la ayuda del Bode anterior <strong>dibujamos el Nyquist</strong> para las frecuencias <span class="math notranslate nohighlight">\(0_+ \leq \omega \leq +\infty\)</span> y el simétrico para frecuencias negativas</p></li>
+</ol>
+<figure class="align-center" id="est-fig8">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig82.png"><img alt="../../../../../_images/est_fig82.png" src="../../../../../_images/est_fig82.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Diagrama de Nyquist de <span class="math notranslate nohighlight">\(G(s)\)</span></span><a class="headerlink" href="#est-fig8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>En este caso el diagrama de Nyquist es cerrado por lo que no es necesario evaluar el cierre por infinito. Observar que todos los puntos de <span class="math notranslate nohighlight">\(\mathscr{C}_2\)</span> se mapean a cero del diagrama de Nyquist. <span class="math notranslate nohighlight">\(G(\mathscr{C}_2)\)</span> con <span class="math notranslate nohighlight">\(s=\rho e^{-j\theta}\)</span> con <span class="math notranslate nohighlight">\(\rho \longrightarrow \infty\)</span>.</p></li>
+<li><p>Contamos las vueltas alrededor de -1 y los polos en <span class="math notranslate nohighlight">\(\mathbb{C}^+\)</span> a lazo abierto, es decir polos de <span class="math notranslate nohighlight">\(L(s)\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{matrix}
+N = 0 \text{ en este caso no hay vueltas sobre -1 } \forall k\\
+P = 0 \text{ en este caso no hay polos de } G(s) \text{ en } \mathbb{C}^+
+\end{matrix}
+\end{split}\]</div>
+<ol class="arabic simple" start="5">
+<li><p>Usamos el criterio de Nyquist para determinar la estabilidad del sistema es:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+Z= N+P= 0
+\]</div>
+<p>No hay polos en el RHP, por lo que el sistema es estable para cualquier valor de <span class="math notranslate nohighlight">\(k\)</span></p>
+<ol class="arabic simple" start="6">
+<li><p>Para verificar la estabilidad del sistema, dibujamos el lugar de las raíces asintótico para este sistema con realimentación unitaria y ganancia <span class="math notranslate nohighlight">\(k\)</span>, tanto para <span class="math notranslate nohighlight">\(k\)</span> negativos como positivos, esto es:</p></li>
+</ol>
+<figure class="align-center" id="est-fig9">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig92.png"><img alt="../../../../../_images/est_fig92.png" src="../../../../../_images/est_fig92.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Lugar de las raíces asintótico de <span class="math notranslate nohighlight">\(G(s)\)</span></span><a class="headerlink" href="#est-fig9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Notar que para ciertos valores de ganancias negativas, el sistema se hace inestable con un polo en el semi-plano derecho.</p>
+</section>
+<section id="otro-ejemplo-con-cierre-por-infty">
+<h3>Otro ejemplo: Con cierre por <span class="math notranslate nohighlight">\(\infty\)</span><a class="headerlink" href="#otro-ejemplo-con-cierre-por-infty" title="Link to this heading">#</a></h3>
+<p>En este caso analizaremos un sistema en el que hay que cerrar el diagrama de Nyquist por el infinito de la función:</p>
+<div class="math notranslate nohighlight">
+\[
+G(s) = \frac{1}{s(s+1)}
+\]</div>
+<p>Los diagramas de Nyquist cierran por <span class="math notranslate nohighlight">\(\infty\)</span> cuando hay singularidades sobre el eje-<span class="math notranslate nohighlight">\(j\omega\)</span>, en estos casos hay es necesario definir de que lado esta cada singularidad, están incluidas en <span class="math notranslate nohighlight">\(\mathbb{C}^+\)</span> o en <span class="math notranslate nohighlight">\(\mathbb{C}^-\)</span>, para este ejemplo, el polo en cero lo excluimos de <span class="math notranslate nohighlight">\(\mathbb{C}_+\)</span> por lo que <span class="math notranslate nohighlight">\(P=0\)</span></p>
+<figure class="align-center" id="est-fig10">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig102.png"><img alt="../../../../../_images/est_fig102.png" src="../../../../../_images/est_fig102.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Curva de Nyquist en el plano-s de <span class="math notranslate nohighlight">\(G(s)= \frac{1}{s(s+1)}\)</span></span><a class="headerlink" href="#est-fig10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Comenzamos haciendo un Bode asintótico para dibujar el Nyquist para frecuencias <span class="math notranslate nohighlight">\(\omega &gt;0\)</span>, es decir que van entre <span class="math notranslate nohighlight">\(0_+ &lt; \omega &lt; +\infty\)</span> y el simétrico de frecuencias negativas <span class="math notranslate nohighlight">\(0_- &lt; \omega &lt; -\infty\)</span></p>
+<figure class="align-center" id="est-fig11">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig112.png"><img alt="../../../../../_images/est_fig112.png" src="../../../../../_images/est_fig112.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Bode asintótico de <span class="math notranslate nohighlight">\(G(s)= \frac{1}{s(s+1)}\)</span></span><a class="headerlink" href="#est-fig11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Con el Bode anterior dibujamos el mapeo de <span class="math notranslate nohighlight">\(G(\mathscr{C}_1)\)</span></p>
+<figure class="align-center" id="est-fig12">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig122.png"><img alt="../../../../../_images/est_fig122.png" src="../../../../../_images/est_fig122.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Nyquist de <span class="math notranslate nohighlight">\(G(\mathscr{C}_1)\)</span></span><a class="headerlink" href="#est-fig12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>El mapeo de <span class="math notranslate nohighlight">\(G(\mathscr{C}_2)\)</span> donde <span class="math notranslate nohighlight">\(\mathscr{C}_2: s=\rho e^{j\theta} \text{ con } \rho \longrightarrow \infty \text{ y } -\frac{\pi}{2}&lt;\theta&lt;\frac{\pi}{2}\)</span> pasando por <span class="math notranslate nohighlight">\(\theta = 0\)</span> son puntos que van a parar al 0 del diagrama de Nyquist.</p>
+<div class="math notranslate nohighlight">
+\[
+G(s)= \lim_{\rho \rightarrow \infty}\frac{1}{\rho e^{j\theta}(\rho e^{j\theta}+1)}\approx \lim_{\rho \rightarrow \infty} \frac{1}{\rho} e^{-j\theta}
+\]</div>
+<p>Agregamos a lo que dibujamos para frecuencias positivas <span class="math notranslate nohighlight">\(\omega&gt;0\)</span> a partir del Bode, y el simétrico para frecuencias negativas, es decir <span class="math notranslate nohighlight">\(\omega&lt;0\)</span>.</p>
+<figure class="align-center" id="est-fig13">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig132.png"><img alt="../../../../../_images/est_fig132.png" src="../../../../../_images/est_fig132.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Nyquist de <span class="math notranslate nohighlight">\(G(s)\)</span> sin cerrar</span><a class="headerlink" href="#est-fig13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Analizamos el cierre por infinito, para lo que usaremos el contorno <span class="math notranslate nohighlight">\(\mathscr{C}_3\)</span>, que se parametriza como:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathscr{C}_3: s=\rho e^{j\theta} \text{ con } \rho \longrightarrow 0 \text{ y } -\frac{\pi}{2}&lt;\theta&lt;\frac{\pi}{2} \text{ pasando por }\theta = 0
+\]</div>
+<p>Sustituyendo en <span class="math notranslate nohighlight">\(G(s)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+G(s)= \lim_{\rho \rightarrow 0}\frac{1}{\rho e^{j\theta}(\rho e^{j\theta}+1)}\approx \lim_{\rho \rightarrow 0}\frac{1}{\rho e^{j\theta}} = \lim_{\rho \rightarrow 0} \frac{1}{\rho} e^{-j\theta}
+\]</div>
+<p>De lo anterior con <span class="math notranslate nohighlight">\(\rho \longrightarrow 0\)</span> tenemos que el módulo del mapeo tiende a infinito <span class="math notranslate nohighlight">\(||\longrightarrow \infty\)</span> y si no es evidente, el ángulo lo podemos evaluar para algunos valores relevantes de <span class="math notranslate nohighlight">\(\theta\)</span> y calcular el argumento del mapeo, que en este caso le llamaremos <span class="math notranslate nohighlight">\(\phi\)</span>, para lo que hacemos la siguiente <code class="xref std std-numref docutils literal notranslate"><span class="pre">tabla1</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" id="tabla1">
+<caption><span class="caption-text">Mapeo del ángulo <span class="math notranslate nohighlight">\(\theta\)</span></span><a class="headerlink" href="#tabla1" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\theta [deg]\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\phi [deg]\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-90</p></td>
+<td><p>90</p></td>
+</tr>
+<tr class="row-odd"><td><p>-45</p></td>
+<td><p>45</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>45</p></td>
+<td><p>-45</p></td>
+</tr>
+<tr class="row-even"><td><p>45</p></td>
+<td><p>-45</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Con lo anterior podemos cerrar el diagrama como se ve en <code class="xref std std-numref docutils literal notranslate"><span class="pre">est_fig14</span></code></p>
+<figure class="align-center" id="est-fig14">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig142.png"><img alt="../../../../../_images/est_fig142.png" src="../../../../../_images/est_fig142.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Nyquist de <span class="math notranslate nohighlight">\(G(s)\)</span> cerrado</span><a class="headerlink" href="#est-fig14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Finalmente con el diagrama cerrado podemos, contamos la vueltas al -1 y los polos de <span class="math notranslate nohighlight">\(G(s)\)</span> en el RHP y calculamos la estabilidad del sistema:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{matrix}
+N=0 &amp; \text{ y } &amp; P=0 &amp; \Longrightarrow &amp; Z=0 ~~ \forall k&gt;0 \text{( siempre es estable)}
+\end{matrix}
+\]</div>
+<p>Validamos lo anterior haciendo el lugar de las raíces asintótico para <span class="math notranslate nohighlight">\(k&gt;0\)</span>. En este caso el sistema tiene dos asíntotas con centro de asíntota <span class="math notranslate nohighlight">\(\sigma_a = -0.5\)</span> y ángulos de asíntota <span class="math notranslate nohighlight">\(\theta_a = \pm \pi/2\)</span>. Con lo que el asintótico queda de la forma:</p>
+<figure class="align-center" id="est-fig15">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig152.png"><img alt="../../../../../_images/est_fig152.png" src="../../../../../_images/est_fig152.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Lugar de las raíces asintótico de <span class="math notranslate nohighlight">\(G(s)= \frac{1}{s(s+1)}\)</span> con <span class="math notranslate nohighlight">\(k&gt;0\)</span></span><a class="headerlink" href="#est-fig15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Un detalle del gráfico, <strong>«que no es relevante para determinar la estabilidad»</strong>, que suele aparecer al dibujar el diagrama de Nyquist con alguna herramienta de simulación. Cuando la frecuencia es muy grande la curva de Nyquist no se hace asintótica al eje <span class="math notranslate nohighlight">\(j\omega\)</span> en realidad para este ejemplo, se hace asintótica al eje -1.</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{\omega \rightarrow 0^+} G(\omega)=\lim_{\omega \rightarrow 0^+}\bigg(\frac{-1}{\omega^2+1}-j\frac{1}{\omega(\omega^2+1)} \bigg)= -1
+\]</div>
+<figure class="align-center" id="est-fig16">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig162.png"><img alt="../../../../../_images/est_fig162.png" src="../../../../../_images/est_fig162.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Asíntota de Nyquist</span><a class="headerlink" href="#est-fig16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Todavía quedan algunas preguntas por responder sobre este ejemplo. ¿Cómo cierra el Nyquist si incluimos el polo en la curva que encierra el semi-plano derecho? y ¿Qué sucede con la estabilidad para <span class="math notranslate nohighlight">\(k&lt;0\)</span>?</p>
+<p>Al incluir el polo dentro de la curva que encierra el semi-plano derecho, ahora los polos de <span class="math notranslate nohighlight">\(G(s)\)</span> en RHP son <span class="math notranslate nohighlight">\(P=1\)</span>. Realizamos el diagrama de Nyquist para ese caso y contamos las vueltas a -1, por lo que <span class="math notranslate nohighlight">\(N=-1\)</span>, con lo que <span class="math notranslate nohighlight">\(Z=N+P=0\)</span> esto es para todo <span class="math notranslate nohighlight">\(k&gt;0\)</span>.</p>
+<figure class="align-center" id="est-fig16-1">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig16_12.png"><img alt="../../../../../_images/est_fig16_12.png" src="../../../../../_images/est_fig16_12.png" style="height: 200px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Nyquist cuando la curva de Nyquist contiene el polo en cero</span><a class="headerlink" href="#est-fig16-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>La estabilidad para <span class="math notranslate nohighlight">\(k&lt;0\)</span> se puede analizar de dos formas, por un lado se puede hacer el Nyquist para esa condición (rotando 180° el diagrama) como se muestra en la figura siguiente y analizar las vueltas a -1 del sistema.</p>
+<figure class="align-center" id="est-fig16-2">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig16_22.png"><img alt="../../../../../_images/est_fig16_22.png" src="../../../../../_images/est_fig16_22.png" style="height: 250px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Nyquist de <span class="math notranslate nohighlight">\(k&lt;0\)</span> y la curva de Nyquist no contiene el polo en cero.</span><a class="headerlink" href="#est-fig16-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Para este caso <span class="math notranslate nohighlight">\(P=0\)</span> y <span class="math notranslate nohighlight">\(N=1\)</span> para todo valor de <span class="math notranslate nohighlight">\(k&lt;0\)</span> con lo que <span class="math notranslate nohighlight">\(Z=N+P =1 \)</span> por lo que el sistema es siempre inestable con un polo en RHP.</p>
+<p>Por otro lado, lo que suele ser mas práctico, es plantear «cambiar la escala del eje real» reemplazando el punto -1 por el <span class="math notranslate nohighlight">\(-\frac{1}{k}\)</span>, Notar que para analizar la estabilidad estamos evaluando la ecuación característica el sistema, pero ahora con <span class="math notranslate nohighlight">\(k\)</span> variable, es decir <span class="math notranslate nohighlight">\(1+kL(s)=0\)</span>, por lo que es lo mismo que ver <span class="math notranslate nohighlight">\(L(s)=-\frac{1}{k}\)</span>. Cuando <span class="math notranslate nohighlight">\(k&gt;0\)</span> se mueve en el eje real negativo y cuando <span class="math notranslate nohighlight">\(k&lt;0\)</span> el punto se mueve en el eje real positivo, de esta forma dibujamos el Nyquist para <span class="math notranslate nohighlight">\(k=1\)</span> y luego movemos el punto <span class="math notranslate nohighlight">\(-\frac{1}{k}\)</span> como se muestra en la figura siguiente.</p>
+<figure class="align-center" id="est-fig16-3">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig16_32.png"><img alt="../../../../../_images/est_fig16_32.png" src="../../../../../_images/est_fig16_32.png" style="height: 350px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Análisis de estabilidad en el punto <span class="math notranslate nohighlight">\(-\frac{1}{k}\)</span> para todo valor de <span class="math notranslate nohighlight">\(k\)</span>.</span><a class="headerlink" href="#est-fig16-3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="margen-de-fase-mf-y-margen-de-ganancia-mg">
+<h2>Margen de Fase (MF) y Margen de Ganancia (MG)<a class="headerlink" href="#margen-de-fase-mf-y-margen-de-ganancia-mg" title="Link to this heading">#</a></h2>
+<p>Usando diagramas de Nyquist se definen dos mediciones cuantitativas de «cuan estable es el sistema que estamos analizando». Estas son el margen de ganancia y el margen de fase.
+Sistemas con margenes de estabilidad de ganancia y fase grandes pueden soportar grandes variaciones en los parámetros antes de hacerse inestables. En el lugar de las raíces esto sería equivalente a cuan lejos se encuentran los polos del eje <span class="math notranslate nohighlight">\(j\omega\)</span>.</p>
+<section id="definicion-de-margen-de-ganancia-g-m">
+<h3>Definición de Margen de Ganancia <span class="math notranslate nohighlight">\(G_M\)</span><a class="headerlink" href="#definicion-de-margen-de-ganancia-g-m" title="Link to this heading">#</a></h3>
+<p>Es el cambio en la ganancia a lazo abierto, expresado en decibels (<span class="math notranslate nohighlight">\(dB\)</span>), requerida a fase <span class="math notranslate nohighlight">\(180º\)</span> para hacer que el sistema sea inestable a lazo cerrado.</p>
+</section>
+<section id="definicion-de-margen-de-fase-phi-m">
+<h3>Definición de Margen de Fase  <span class="math notranslate nohighlight">\(\Phi_M\)</span><a class="headerlink" href="#definicion-de-margen-de-fase-phi-m" title="Link to this heading">#</a></h3>
+<p>Es el cambio de fase a lazo abierto cuando la ganancia del sistema es 1 en valor absoluto (o <span class="math notranslate nohighlight">\(0~dB\)</span>) que hace que el sistema a lazo cerrado sea inestable.</p>
+<p>Gráficamente es:</p>
+<figure class="align-center" id="est-fig17">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig172.png"><img alt="../../../../../_images/est_fig172.png" src="../../../../../_images/est_fig172.png" style="height: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Margenes de estabilidad</span><a class="headerlink" href="#est-fig17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Si la ganancia del sistema es multiplicada por <span class="math notranslate nohighlight">\(a\)</span> el Nyquist intercepta el punto crítico -1. Se dice que el margen de ganancia es <span class="math notranslate nohighlight">\(a\)</span> o expresado en decibels <span class="math notranslate nohighlight">\(G_M=20\log(a)\)</span>.</p>
+<p>Luego cuando la ganancia es unitario (cuando el Nyquist corta el circulo unitario). El ángulo <span class="math notranslate nohighlight">\(\alpha\)</span> es el margen de fase. En tal caso, si tenemos un corrimiento para dicha ganancia de <span class="math notranslate nohighlight">\(\alpha\)</span> grados, el sistema se hace inestable.</p>
+</section>
+<section id="ejemplo-calculo-de-margenes-de-estabilidad-phi-m-y-g-m">
+<h3>Ejemplo: Cálculo de Margenes de estabilidad <span class="math notranslate nohighlight">\(\Phi_M\)</span> y <span class="math notranslate nohighlight">\(G_M\)</span><a class="headerlink" href="#ejemplo-calculo-de-margenes-de-estabilidad-phi-m-y-g-m" title="Link to this heading">#</a></h3>
+<p>En este ejemplo vamos a calcular en forma analítica los margenes de ganancia y de fase del sistema</p>
+<div class="math notranslate nohighlight">
+\[
+L(s)=\frac{6}{(s^2+2s+2)(s+2)}
+\]</div>
+<p>para encontrar el margen de ganancia hay que determinar donde corta el Nyquist el eje real, esto es</p>
+<div class="math notranslate nohighlight">
+\[
+L(j\omega) = \left.\frac{6}{(s^2+2s+2)(s+2)}\right|_{s\rightarrow j\omega}=\frac{6[4(1-\omega^2)-j\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
+\]</div>
+<p>es decir,</p>
+<div class="math notranslate nohighlight">
+\[
+L(j\omega) =
+\frac{6[4(1-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
+-j\frac{6[\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
+\]</div>
+<p>cuando <span class="math notranslate nohighlight">\(\mathbb{I}m = 0 \Longrightarrow \omega=\sqrt{6} rad/s\)</span> entonces <span class="math notranslate nohighlight">\(\mathbb{R}e=-0.3 \Longrightarrow \)</span> la ganancia puede ser incrementada (multiplicar) hasta 3.33 unidades antes de que el sistema se haga inestable</p>
+<div class="math notranslate nohighlight">
+\[
+G_M = 20\log{3.33}= 10.45 dB
+\]</div>
+<p>El margen de fase ocurre cuando <span class="math notranslate nohighlight">\(|L(j\omega_c)|=1\)</span> para esto con la  ayuda del software de cálculo se puede hallar la frecuencia <span class="math notranslate nohighlight">\(\omega=\omega_c\)</span> (corte por <span class="math notranslate nohighlight">\(0dB\)</span>), que para este caso es:</p>
+<div class="math notranslate nohighlight">
+\[
+|L(\omega)|=1 \Longrightarrow \omega_c=1.253 rad/s
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\omega_c \longrightarrow \phi= -112.3 \Longrightarrow \Phi_M=-112.3+180=67.7º
+\]</div>
+</section>
+</section>
+<section id="margenes-de-estabilidad-en-diagramas-de-bode">
+<h2>Margenes de estabilidad en diagramas de Bode<a class="headerlink" href="#margenes-de-estabilidad-en-diagramas-de-bode" title="Link to this heading">#</a></h2>
+<p>Gráficamente en el diagrama de Bode los margenes de estabilidad, el margen de ganancia y el margen de fase se indican como muestra la figura siguiente:</p>
+<figure class="align-center" id="est-fig18">
+<a class="reference internal image-reference" href="../../../../../_images/est_fig182.png"><img alt="../../../../../_images/est_fig182.png" src="../../../../../_images/est_fig182.png" style="height: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Margenes de estabilidad en el diagrama de Bode</span><a class="headerlink" href="#est-fig18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sources/sources/notebooks_sources/modulo_frec/estabilidad_nyquist"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-estabilidad-de-nyquist">Criterio de estabilidad de Nyquist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principio-de-argumento">Principio de argumento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapeo-de-contornos">Mapeo de contornos</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-estabilidad">Criterio de estabilidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-nyquist-asintotico">Diagrama de Nyquist asintótico</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-diagrama-de-nyquist-para-determinar-la-estabilidad">Ejemplo: Diagrama de Nyquist para determinar la estabilidad</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#otro-ejemplo-con-cierre-por-infty">Otro ejemplo: Con cierre por <span class="math notranslate nohighlight">\(\infty\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margen-de-fase-mf-y-margen-de-ganancia-mg">Margen de Fase (MF) y Margen de Ganancia (MG)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-margen-de-ganancia-g-m">Definición de Margen de Ganancia <span class="math notranslate nohighlight">\(G_M\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-de-margen-de-fase-phi-m">Definición de Margen de Fase  <span class="math notranslate nohighlight">\(\Phi_M\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-calculo-de-margenes-de-estabilidad-phi-m-y-g-m">Ejemplo: Cálculo de Margenes de estabilidad <span class="math notranslate nohighlight">\(\Phi_M\)</span> y <span class="math notranslate nohighlight">\(G_M\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margenes-de-estabilidad-en-diagramas-de-bode">Margenes de estabilidad en diagramas de Bode</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Instituto Balseiro - CEATEN
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

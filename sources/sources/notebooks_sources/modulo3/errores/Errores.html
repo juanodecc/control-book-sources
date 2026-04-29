@@ -1,0 +1,1241 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Errores &#8212; Sistemas de Control</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "juanodecc/ceaten_book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script src="../../../../../_static/translations.js?v=efdbd0b9"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sources/sources/notebooks_sources/modulo3/errores/Errores';</script>
+    <link rel="canonical" href="https://juanodecc.github.io/ceaten_book/sources/sources/notebooks_sources/modulo3/errores/Errores.html" />
+    <link rel="index" title="Índice" href="../../../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Advertencia de versión"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../ceaten_sources/intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/sala_de_control.png" class="logo__image only-light" alt="Sistemas de Control - Home"/>
+    <img src="../../../../../_static/sala_de_control.png" class="logo__image only-dark pst-js-only" alt="Sistemas de Control - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Búsqueda</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../ceaten_sources/intro.html">
+                    Material de la materia Elementos de Control
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introducción a Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/gu%C3%ADa_instalaci%C3%B3n/guia_de_instalacion.html">Guía de instalación de las herramientas computacionales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/intro_python/Introducci%C3%B3n%20a%20los%20notebooks%20de%20Jupyter.html">Introducción a los cuadernos de Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/intro_python/Extra_Python.html">Introducción a Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/intro_python/Intro-Matplotlib.html">Figuras en Python - MATPLOTLIB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/intro_python/intro_sympy.html">Introducción a SymPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sistemas Dinámicos y Modelado</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/intro_sys_sen/intro_sis_y_sen.html">Definiciones de Sistemas y Señales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/laplace/transformada_laplace_python_opcional.html">Transformada de Laplace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/laplace/funcion_transferencia.html">Función transferencia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/diagrama_bloques/diagrama_de_bloques.html">Diagramas de bloques</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../notebooks_sources/modulo1/espacio_estado/espacio_de_estados.html">Representación de sistemas dinámicos en espacio de estados</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/espacio_estado/modelado_ss.html">Modelado en espacio de estados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo1/linealizacion/linealizacion.html">Linealización de sistemas no-lineales</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/ejemplos_sistemas.html">Ejemplos de modelos de sistemas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/resorte_no_lineal.html">Sistema masa resorte amortiguador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/CineticaPuntual.html">Ecuaciones de Cinética Puntual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/Nonlinear%20CSTR.html">Sistema CSTR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notebooks_sources/modulo1/ejemplos_sistemas/Ejemplo_Presa_Depredador.html">Sistema presa depredador (Lotka-Volterra)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis de la respuesta temporal</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo2/estabilidad/estabilidad.html">Estabilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo2/respuesta%20temporal/Respuesta%20Temporal.html">Respuesta temporal de sistemas dinámicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo2/polos%20y%20ceros%20adicionales/Efecto%20Polos%20y%20Ceros%20Adicionales.html">Efecto de los polos adicionales y de los ceros</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis de estado estacionario</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo3/realimentacion/carateristicas%20de%20la%20realimentacion.html">Características de la realimentación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo3/sensibilidad/Sensibilidad.html">Sensibilidad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo3/errores/Errores.html">Errores</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lugar de las raíces</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo4/lugar%20de%20las%20raices.html">Lugar de las raíces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo4/Pasos%20para%20el%20trazado.html">Pasos para trazar el lugar geométrico de las raíces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo4/Lugar%20de%20la%20raices%20con%20Python.html">Lugar de las raíces usando Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Respuesta en frecuencia</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_frec/respuesta_frecuencial.html">Respuesta Frecuencial de Sistemas lineales y SISO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_frec/estabilidad_nyquist/estabilidad_en_frecuencia.html">Estabilidad en Frecuencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Diseño de compensadores</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo5/compensadores.html">Compensadores de adelanto y de retraso de fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo5/problema_levitador.html">Problema de levitador magnético</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo5/tipo1_lead.html">Problema con sistema de tipo 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo5/lead_lag_design.html">Ecuaciones útiles para el diseño del Lead por análisis en frecuencia</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Control Moderno</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/polos_ceros_EE.html">Polos y Ceros en los modelos de espacio de estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/formas_canonicas.html">Formas canónicas de un espacio de estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/transformacion_formas_canonicas.html">Transformación lineal del espacio de estado</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/ctrb_obsv.html">Análisis de los sistemas en su forma de espacio de estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/referencia.html">Inserción de referencias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/LSR.html">Elección de la ubicación de los polos a lazo cerrado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/estimadores.html">Diseño de estimadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/ejemplo_A_ve_motor_cc.html">Diseño para un motor de continua</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/ejemplo_B_ve_atitud_satelite.html">Diseño del sistema de control del atitud de un satélite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notebooks_sources/modulo_ve/ejemplo_C_ve_pendulo_invertido.html">Diseño del sistema de control del pédulo invertido</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/juanodecc/control-book-sources/blob/master/notebooks_sources/sources/sources/notebooks_sources/modulo3/errores/Errores.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/juanodecc/control-book-sources" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Repositorio de origen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/juanodecc/control-book-sources/edit/master/notebooks_sources/sources/sources/notebooks_sources/modulo3/errores/Errores.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/juanodecc/control-book-sources/issues/new?title=Issue%20on%20page%20%2Fsources/sources/notebooks_sources/modulo3/errores/Errores.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Abrir un problema"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../../_sources/sources/sources/notebooks_sources/modulo3/errores/Errores.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Descargar archivo de cuaderno"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../../../../../_sources/sources/sources/notebooks_sources/modulo3/errores/Errores.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Tema" data-bs-title="Tema"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Claro"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Oscuro"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="Sistema"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Errores</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-importante">Definición importante</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso-del-uso-del-teorema-del-valor-final-tvf">Repaso del uso del Teorema del Valor Final (TVF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-1-uso-del-teorema">Ejemplo 1. Uso del teorema</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-2-uso-incorrecto-de-este-teorema">Ejemplo 2: Uso incorrecto de este teorema</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-de-estado-estacionario-y-sistema-tipo">Error de estado estacionario y sistema tipo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-especial-realimentacion-unitaria-y-constantes-de-error">Caso especial: Realimentación unitaria y constantes de error</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#errores-en-funcion-del-tipo-de-sistema">Errores en función del tipo de sistema</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-1">Ejemplo 1</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-2">Ejemplo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion-ejemplo-2">Solución ejemplo 2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#para-solucionar-en-casa-facil">Para solucionar en casa (fácil)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-de-sistema-para-la-regulacion-y-rechazo-a-las-perturbaciones">Tipo de sistema para la regulación y rechazo a las perturbaciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-3-tipo-de-sistema-para-un-motor-de-corriente-continua-con-control-de-posicion">Ejemplo 3: Tipo de sistema para un motor de corriente continua con control de posición</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="errores">
+<h1>Errores<a class="headerlink" href="#errores" title="Link to this heading">#</a></h1>
+<p>Al ver respuesta temporal, pudimos lograr la descripción de la respuesta transitoria de la señal de salida de un sistema, para ello definimos algunos parámetros que identifican dicha respuesta, como ser <span class="math notranslate nohighlight">\(Ts\)</span>, <span class="math notranslate nohighlight">\(Tr\)</span>, <span class="math notranslate nohighlight">\(Tp\)</span> y <span class="math notranslate nohighlight">\(Mp\)</span>. Ahora, nos centraremos en la «parte estacionaria» de la respuesta o salida del sistema, en otras palabras, nos interesa el valor final de la señal de salida luego del transitorio. Para esto, usaremos básicamente dos cosas, por un lado una definición para el error de estado estacionario y por otro lado el teorema del valor final para el cálculo de dicho error.</p>
+<section id="definicion-importante">
+<h2>Definición importante<a class="headerlink" href="#definicion-importante" title="Link to this heading">#</a></h2>
+<p>Se define la señal de error <span class="math notranslate nohighlight">\(E(s)\)</span>  el equivalente en el dominio de Laplace de la señal <span class="math notranslate nohighlight">\(e(t)\)</span> como:</p>
+<div class="math notranslate nohighlight">
+\[
+E(s)= R(s)-Y(s)
+\]</div>
+<p>para todo sistema donde, <span class="math notranslate nohighlight">\(R(s)\)</span> es lo que quiero, es la referencia del sistema o el valor deseado y <span class="math notranslate nohighlight">\(Y(s)\)</span> es lo que és, es la salida del sistema o la medición.</p>
+</section>
+<section id="repaso-del-uso-del-teorema-del-valor-final-tvf">
+<h2>Repaso del uso del Teorema del Valor Final (TVF)<a class="headerlink" href="#repaso-del-uso-del-teorema-del-valor-final-tvf" title="Link to this heading">#</a></h2>
+<p>Si todos los polos de <span class="math notranslate nohighlight">\(sY(s)\)</span> están en el lado izquierdo de plano <span class="math notranslate nohighlight">\(s\)</span>, entonces:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{t\rightarrow\infty}y(t)=\lim_{s\rightarrow 0}sY(s)\]</div>
+<section id="ejemplo-1-uso-del-teorema">
+<h3>Ejemplo 1. Uso del teorema<a class="headerlink" href="#ejemplo-1-uso-del-teorema" title="Link to this heading">#</a></h3>
+<p>Encontrar el valor final de la señal <span class="math notranslate nohighlight">\(y(t)\)</span> cuya transformada de Laplace es <span class="math notranslate nohighlight">\(Y(s)=\dfrac{3(s+2)}{s(s^2+2s+10))}\)</span>.</p>
+<p>Par aver si podemos aplicar el teorema de valor final debemos fijarnos que todos los polos de <span class="math notranslate nohighlight">\(sY(s)\)</span> estén en el lado izquierdo de plano <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<p>Esto los podemos hacer:</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Yaux</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span> <span class="c1">#es Y(s)*s</span>
+<span class="n">Yaux</span><span class="o">.</span><span class="n">pole</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">Yaux</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span> <span class="c1">#es Y(s)*s</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">Yaux</span><span class="o">.</span><span class="n">pole</span><span class="p">()</span>
+
+<span class="ne">AttributeError</span>: &#39;TransferFunction&#39; object has no attribute &#39;pole&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos ver que cumple con las hipótesis del teorema del valor final, entonce resolviendo el límite tenemos que:</p>
+<div class="math notranslate nohighlight">
+\[y(\infty)==\left. sY(s) \right\rvert_{s=0}=\frac{3\cdot 2}{10}=0.6\]</div>
+<p>Podemos verificar haciendo la respuesta al impulso, graficándola y viendo el valor final al cual tiende.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">impulse_response</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">200</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;tiempo [seg]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y(t)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Respuesta al impulso&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="ejemplo-2-uso-incorrecto-de-este-teorema">
+<h3>Ejemplo 2: Uso incorrecto de este teorema<a class="headerlink" href="#ejemplo-2-uso-incorrecto-de-este-teorema" title="Link to this heading">#</a></h3>
+<p>Obtener el valor final de la señal</p>
+<div class="math notranslate nohighlight">
+\[Y(s)=\frac{3}{s(s-2)}\]</div>
+<p>Aplicando el teorema ciegamente sin tener en cuenta sus hipótesis, tenemos:</p>
+<div class="math notranslate nohighlight">
+\[y(\infty)=\left. sY(s) \right\rvert_{s=0}=-\frac{3}{2}\]</div>
+<p>Sin embargo, podemos ver que:</p>
+<div class="math notranslate nohighlight">
+\[y(t)=\left(-\frac{3}{2}+\frac{3}{2}e^{2t}\right)\mu(t)\]</div>
+<p>La cual tiende a infinito si <span class="math notranslate nohighlight">\(t\)</span> tiende a infinito. EL SISTEMA ES INESTABLE!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">impulse_response</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;tiempo [seg]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y(t)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Respuesta al impulso&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="error-de-estado-estacionario-y-sistema-tipo">
+<h2>Error de estado estacionario y sistema tipo<a class="headerlink" href="#error-de-estado-estacionario-y-sistema-tipo" title="Link to this heading">#</a></h2>
+<p>El error <span class="math notranslate nohighlight">\(e(t)\)</span> de un sistema lo definido como la referencia menos la salida, es decir:</p>
+<div class="math notranslate nohighlight">
+\[e(t)=r(t)-y(t)\]</div>
+<p>o lo que es lo mismo, en el dominio de Laplace:</p>
+<div class="math notranslate nohighlight">
+\[E(s)=R(s)-Y(s)\]</div>
+<p>En la figura mostramos dos diagramas genéricos de bloques equivalentes, con la definición del error. Observemos del segundo diagrama de bloques, que si <span class="math notranslate nohighlight">\(H/I = 1, e(t) = a(t)\)</span>.</p>
+<p>Dicho error tendrá un transitorio, y luego llegará a un estacionario al cual se lo denomina error de estado estacionario.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../../../../_images/fig42.gif"><img alt="../../../../../_images/fig42.gif" src="../../../../../_images/fig42.gif" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Diagrama genérico para errores en estado estacionario</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="caso-especial-realimentacion-unitaria-y-constantes-de-error">
+<h3>Caso especial: Realimentación unitaria y constantes de error<a class="headerlink" href="#caso-especial-realimentacion-unitaria-y-constantes-de-error" title="Link to this heading">#</a></h3>
+<p>Si <span class="math notranslate nohighlight">\(H = I\)</span>, podemos modelar el sistema con realimentación unitaria como muestra la siguiente figura.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../../../../../_images/fig52.gif"><img alt="../../../../../_images/fig52.gif" src="../../../../../_images/fig52.gif" style="width: 300px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Diagrama particular con <span class="math notranslate nohighlight">\(H(s)\)</span>=1 y <span class="math notranslate nohighlight">\(G(s) = I(s)D(s)G_p(s)\)</span>.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Entonces tendremos:</p>
+<div class="math notranslate nohighlight">
+\[F(s) = \dfrac{E(s)}{R(s)} = \dfrac{1}{1+G(s)}\]</div>
+<p>Consideraremos a las entradas <span class="math notranslate nohighlight">\(r(t)\)</span> polinómicas de la forma</p>
+<div class="math notranslate nohighlight">
+\[r(t) = \dfrac{t^k}{k!} \text{ para } t&gt;0\]</div>
+<p>siendo su transformada de Laplace</p>
+<div class="math notranslate nohighlight">
+\[R(s)=\dfrac{1}{s^{k+1}}\]</div>
+<p>Se toma como base un sistema mecánico genérico como referencia para la nomenclatura, llamando para las entradas con <span class="math notranslate nohighlight">\(k=0\)</span> entrada de posición, para <span class="math notranslate nohighlight">\(k=1\)</span> entrada de velocidad, y para <span class="math notranslate nohighlight">\(k=2\)</span> entrada de aceleración, sin tener en cuenta las unidades de la señal de entrada actual. Aplicando el teorema del valor final</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\lim_{t\rightarrow \infty} e(t) &amp; = e_{ss}= \lim_{s\rightarrow 0} sE(s)\\
+&amp; = \lim_{s\rightarrow 0} \frac{1}{1+G}R(s)\\
+&amp; = \lim_{s\rightarrow 0} s \frac{1}{1+G}\frac{1}{s^{k+1}}
+\end{align}
+\end{split}\]</div>
+<p>Consideremos primero un sistema para donde <span class="math notranslate nohighlight">\(G(s)\)</span> no tiene polo en el origin, es decir no un ningún integrador en <span class="math notranslate nohighlight">\(G(s)\)</span> y que se tiene una entrada escalón <span class="math notranslate nohighlight">\(R(s)=\dfrac{1}{s}\)</span>. De esta manera <span class="math notranslate nohighlight">\(r(t)\)</span> es una entrada polinomial de grado 0. En este caso podemos escribir las ecuaciones anteriores:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+e_{ss}  &amp; = \lim_{s\rightarrow 0} s\frac{1}{1+G(s)}\frac{1}{s}\\
+\dfrac{e_{ss}}{r_{ss}} &amp; = \dfrac{e_{ss}}{1}=e_{ss} = \frac{1}{1+G(0)}
+\end{align}
+\end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(r_{ss} = \lim_{t\rightarrow \infty} =1 \)</span>.</p>
+<p>Se define que este sistema es de <strong>Tipo 0</strong> y definimos la constante <span class="math notranslate nohighlight">\(G(0)\triangleq K_p\)</span> que llamamos <strong>constantes de error de posición</strong>.</p>
+<p>Notar que la ecuación anterior brinda <strong>el error relativo</strong>, es decir la relación entre el valor final del error y la y referencia.</p>
+<p>Si la entrada fuera un polinomio mayor a 1, el error resultante crecería sin límites. Una <strong>entrada polinómica de grado cero</strong> es el grado más alto que un sistema de <strong>Tipo 0</strong> puede seguir con error fínito.</p>
+<p>Si <span class="math notranslate nohighlight">\(G(s)\)</span> tiene un polo en el origen, entonces podríamos continuar esta linea argumentativa y considerar un polinomio de orden 1 como entrada <span class="math notranslate nohighlight">\(r(s)\)</span>, que es directo evaluarlo directamente de manera general. Para este caso es necesario describir el comportamiento de la planta y el controlador cuando <span class="math notranslate nohighlight">\(s\)</span> se aproxima a 0. Para este propósito agrupamos todos los términos excepto los polos en el origen de la función <span class="math notranslate nohighlight">\(G(s)\)</span> en la función <span class="math notranslate nohighlight">\(G_0(s)\)</span>, de manera que podamos definir <span class="math notranslate nohighlight">\(G_0(0)=K_n\)</span> y podemos escribir la función <span class="math notranslate nohighlight">\(G(s)\)</span> como:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{G_0(s)}{s^n}\]</div>
+<p>De estar forma, si por ejemplo <span class="math notranslate nohighlight">\(G(s)\)</span> no tienen integradores, entonces <span class="math notranslate nohighlight">\(n=0\)</span>; si tiene 1 integrador entonces <span class="math notranslate nohighlight">\(n=1\)</span>, y así sucesivamente. Sustituyendo esto en la expresión del error:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+e_{ss} &amp; = \lim_{s\rightarrow 0 } s\frac{1}{1+\frac{G_0(s)}{s^n}}\frac{1}{s^{k+1}}\\
+&amp; = \lim_{s\rightarrow 0} \frac{s^n}{s^n+k_n}\frac{1}{s^k}
+\end{align}
+\end{split}\]</div>
+<p>Para esta ecuación podemos ver que si <span class="math notranslate nohighlight">\(n&gt; k\)</span> entonces <span class="math notranslate nohighlight">\(e =0\)</span> y si <span class="math notranslate nohighlight">\(n&lt;k\)</span>  entonces el error <span class="math notranslate nohighlight">\(e(t) \rightarrow \infty\)</span>.</p>
+<p>Si <span class="math notranslate nohighlight">\(n = k = 0\)</span> entonces <span class="math notranslate nohighlight">\(e_{ss} = \dfrac{1}{1+K_0}\)</span> y si <span class="math notranslate nohighlight">\(n = k \neq 0\)</span> entonces <span class="math notranslate nohighlight">\(e_{ss} = \frac{1}{K_n}\)</span>.</p>
+<p>Como se dijo anteriormente si <span class="math notranslate nohighlight">\(n= k =0\)</span>, la entrada es una señal polinomial de orden 0 y la constante <span class="math notranslate nohighlight">\(K_p\)</span> se llama constante de posición, se la escribe <span class="math notranslate nohighlight">\(K_p\)</span> y el sistema se clásifica como sistema de <strong>Tipo 0</strong>.</p>
+<p>Si <span class="math notranslate nohighlight">\(n=k=1\)</span>, la entrada es un polinomio de orden 1 y se conoce como rampa o entrada de velocidad, y la constante <span class="math notranslate nohighlight">\(K_1\)</span> se la llama constante de velocidad y se escribe <span class="math notranslate nohighlight">\(K_v\)</span>. Este sistema se clasifica como sistema de <strong>Tipo 1</strong>. De manera similar podemos extendernos a sistemas de <strong>Tipo 2</strong> y mayores.</p>
+<p>En la siguiente tabla mostramos los principales resultados de los visto hasta recién:</p>
+<section id="errores-en-funcion-del-tipo-de-sistema">
+<h4>Errores en función del tipo de sistema<a class="headerlink" href="#errores-en-funcion-del-tipo-de-sistema" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Tipo de entrada</p></th>
+<th class="head text-center"><p>Escalón (posición)</p></th>
+<th class="head text-center"><p>Rampa (velocidad)</p></th>
+<th class="head text-center"><p>Parabola (aceleración)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>Tipo 0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\frac{1}{1+K_p}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Tipo 1</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\frac{1}{K_v}\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Tipo 2</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p>0</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\frac{1}{K_a}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Podemos resumir entonces los calores de las constantes como:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+K_p &amp; = \lim_{s\rightarrow 0} G(s),&amp; \qquad n = 0\\
+ K_v &amp; = \lim_{s\rightarrow 0} sG(s),&amp; \qquad n = 1\\
+ K_a &amp; = \lim_{s\rightarrow 0} s^2G(s),&amp; \qquad n = 2
+\end{align}
+\end{split}\]</div>
+</section>
+<section id="ejemplo-1">
+<h4>Ejemplo 1<a class="headerlink" href="#ejemplo-1" title="Link to this heading">#</a></h4>
+<p>Determine el tipo de sistema, la constante de error y el error que se obtendrá para las entradas de la tabla para el sistema realimentado donde se tiene un controlador proporcional <span class="math notranslate nohighlight">\(D(s) = k_p\)</span> y una planta <span class="math notranslate nohighlight">\(G_p(s) = \frac{A}{\tau s +1}\)</span>.</p>
+<p><strong>Solución</strong>
+Siguiendo la nomenclatura tenemos que:</p>
+<div class="math notranslate nohighlight">
+\[G(s) = \frac{k_p A}{\tau s +1}\]</div>
+<p>Podemos ver que este sistema no tiene polos en 0 por lo que <span class="math notranslate nohighlight">\(n=0\)</span>. Entonces el sistema es <strong>Tipo 0</strong>.</p>
+<p>La constante de error es:</p>
+<div class="math notranslate nohighlight">
+\[K_p = \lim_{s\rightarrow 0} \frac{k_p A}{\tau s +1} = k_p A \]</div>
+<p>El error al escalón por lo tanto será:</p>
+<div class="math notranslate nohighlight">
+\[e_{ss} = \frac{1}{1 + k_p A}\]</div>
+<p>Mirando la tabla podemos ver que para entradas rampas y parabolas el error será <span class="math notranslate nohighlight">\(\infty\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kp</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">A</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">G</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="n">kp</span><span class="o">*</span><span class="n">A</span><span class="p">],[</span><span class="n">tau</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">t</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">step_response</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tiempo&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Salida&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Respuesta al escalón&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Ahora veamos ahora la salida del sistema realimentado.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">feedback</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">step_response</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tiempo&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Salida&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Respuesta al escalón&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Por último analicemos que pasa con el error del sistema realimentado:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Te</span> <span class="o">=</span> <span class="n">ctrl</span><span class="o">.</span><span class="n">feedback</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">step_response</span><span class="p">(</span><span class="n">Te</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tiempo&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Salida&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Respuesta al escalón&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="ejemplo-2">
+<h3>Ejemplo 2<a class="headerlink" href="#ejemplo-2" title="Link to this heading">#</a></h3>
+<p>Mismo que el caso anterior pero ahora el controlador es del tiempo integral, es decir que <span class="math notranslate nohighlight">\(D(s)=\dfrac{k_i}{s}\)</span>.</p>
+<section id="solucion-ejemplo-2">
+<h4>Solución ejemplo 2<a class="headerlink" href="#solucion-ejemplo-2" title="Link to this heading">#</a></h4>
+<p>Ahora tenemos que:</p>
+<div class="math notranslate nohighlight">
+\[G(s)=\frac{k_i A }{s(\tau s +1)}\]</div>
+<p>por lo tanto el sistema es de <em>Tipo 1</em> ya que <span class="math notranslate nohighlight">\(n=1\)</span>.</p>
+<p>La constante tenemos definida la constante <span class="math notranslate nohighlight">\(K_v\)</span></p>
+<div class="math notranslate nohighlight">
+\[K_v = \lim_{s\rightarrow 0} \frac{s k_i A}{s(\tau s +1)} = k_i A\]</div>
+<p>Error en estado estacionario al escalón será 0, mientras que a la rampa será:</p>
+<div class="math notranslate nohighlight">
+\[\left.e_{ss}\right|_{r(t)=t} = \frac{1}{K_v} = \frac{1}{k_i A}\]</div>
+<p>Para una entrada parabólica el error será <span class="math notranslate nohighlight">\(\infty\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ki</span><span class="o">=</span><span class="mf">0.2</span>
+<span class="n">G</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="n">ki</span><span class="o">*</span><span class="n">A</span><span class="p">],[</span><span class="n">tau</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">T</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">feedback</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">step_response</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tiempo&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Salida&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Respuesta al escalón&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Analicemos que pasa ahora con la respuesta del sistema a lazo cerrado frente una rampa. Como la herramienta que utilizamos no posee una rampa como entrada, lo que haremos es multiplicar al sistema por <span class="math notranslate nohighlight">\(\dfrac{1}{s}\)</span>. De esta forma obtendremos la respuesta a la rampa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_aux</span> <span class="o">=</span> <span class="n">ctrl</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">T</span>
+<span class="n">t</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">step_response</span><span class="p">(</span><span class="n">T_aux</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tiempo&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Salida&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Respuesta al escalón&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Analicemos ahora la evolución del error frente a un escalón y frente a una rampa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Te</span><span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">feedback</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">G</span><span class="p">)</span>
+<span class="n">tee</span><span class="p">,</span><span class="n">yee</span> <span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">step_response</span><span class="p">(</span><span class="n">Te</span><span class="p">)</span>  <span class="c1"># error al escalón</span>
+<span class="n">ter</span><span class="p">,</span><span class="n">yer</span> <span class="o">=</span><span class="n">ctrl</span><span class="o">.</span><span class="n">step_response</span><span class="p">(</span><span class="n">Te</span><span class="o">*</span><span class="n">ctrl</span><span class="o">.</span><span class="n">tf</span><span class="p">(</span><span class="mi">1</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span> <span class="c1"># error a la rampa</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tee</span><span class="p">,</span><span class="n">yee</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tiempo&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Salida&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Error al escalón&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ter</span><span class="p">,</span><span class="n">yer</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Tiempo&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Salida&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Error a la rampa&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="para-solucionar-en-casa-facil">
+<h3>Para solucionar en casa (fácil)<a class="headerlink" href="#para-solucionar-en-casa-facil" title="Link to this heading">#</a></h3>
+<p>Realizar el mismo trabajo si el controlador fuese un PI (proporcional-integral), es decir</p>
+<div class="math notranslate nohighlight">
+\[D(s) = k_p + \frac{k_i}{s}\]</div>
+</section>
+</section>
+<section id="tipo-de-sistema-para-la-regulacion-y-rechazo-a-las-perturbaciones">
+<h2>Tipo de sistema para la regulación y rechazo a las perturbaciones<a class="headerlink" href="#tipo-de-sistema-para-la-regulacion-y-rechazo-a-las-perturbaciones" title="Link to this heading">#</a></h2>
+<p>Un sistema también puede ser clasificado según su habilidad para rechazar perturbaciones de forma polinómica de manera análoga al esquema de clasificación hecho para el seguimiento a referencias.</p>
+<p>Supongamos ahora que tenemos un sistema de la forma que se ve en la siguiente figura (<strong>notar el cambio de notación</strong>):</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../../../../../_images/close_loop_with_disturbance2.png"><img alt="../../../../../_images/close_loop_with_disturbance2.png" src="../../../../../_images/close_loop_with_disturbance2.png" style="width: 500px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Sistema a lazo cerrado con perturbaciones</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Si queremos analizar como se comporta el error del sistema frente a una perturbación <span class="math notranslate nohighlight">\(W(s)\)</span>, vamos a pensar que la referencia <span class="math notranslate nohighlight">\(r(t)\)</span> se mantiene en 0. Además para este curso no se va a tener en cuenta el ruido de medición <span class="math notranslate nohighlight">\(v(t)\)</span>. Así <span class="math notranslate nohighlight">\(V(s)=0\)</span> y <span class="math notranslate nohighlight">\(R(s)=0\)</span>.</p>
+<p>Por lo tanto, recordando que <span class="math notranslate nohighlight">\(E(s) = R(s)-Y(s)\)</span>.</p>
+<p>Así tenemos que:</p>
+<div class="math notranslate nohighlight">
+\[E(s)= -Y(s)\]</div>
+<p>Nos interesa la función transferencia:</p>
+<div class="math notranslate nohighlight">
+\[\frac{E(s)}{W(s)}=\frac{-Y(s)}{W(s)} = -\frac{G(s)}{1+G(s)D_{cl}} = T_w(s)\]</div>
+<p>debido a que la entrada es igual a 0, la salida es el error (con el signo cambiado). De manera análoga que para las entradas referencias, se dice que el sistema es <strong>Tipo 0</strong> si para un perturbación escalón un sistema resulta con error constante distinto de 0 en estado estacionario; <strong>Tipo 1</strong> si para una rampa el error resulta constante distinto de 0 y así sucesivamente. En general, siguiendo el mismo enfoque usando para las entradas referencias, asumimos que una constante <span class="math notranslate nohighlight">\(n\)</span> y una función <span class="math notranslate nohighlight">\(T_{o,w}(s)\)</span> puede ser definida con las propiedades que:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(T_{o,w}(0) = \dfrac{1}{K_{n,w}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(T_w(s) = s^nT_{o,w}(s)\)</span></p></li>
+</ul>
+<p>Entonces el error en estado estacionario a una entrada perturbación que sea polinomial de grado <span class="math notranslate nohighlight">\(k\)</span> es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+y_{ss} &amp; = \lim_{s\rightarrow 0 } \left[ sT_w(s)\frac{1}{s^{k+1}}\right]\\
+&amp; = \lim_{s\rightarrow 0} \left[ T_{o,w}(s)\frac{s^n}{s^{k}}\right]
+\end{align}
+\end{split}\]</div>
+<p>De acá tenemos que se <span class="math notranslate nohighlight">\(n&gt;k\)</span> el error es 0 y si <span class="math notranslate nohighlight">\(n&lt;k\)</span> el error no es acotado. Si <span class="math notranslate nohighlight">\(n = k\)</span> el sistema es de tipo <span class="math notranslate nohighlight">\(k\)</span> y el error es dado por <span class="math notranslate nohighlight">\(\dfrac{1}{K_{n,w}}\)</span>.</p>
+<section id="ejemplo-3-tipo-de-sistema-para-un-motor-de-corriente-continua-con-control-de-posicion">
+<h3>Ejemplo 3: Tipo de sistema para un motor de corriente continua con control de posición<a class="headerlink" href="#ejemplo-3-tipo-de-sistema-para-un-motor-de-corriente-continua-con-control-de-posicion" title="Link to this heading">#</a></h3>
+<p>Considerar el modelo simplificado del motor de corriente continua con realimentacion unitaria como se muestra en la figura:</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../../../../../_images/motor_dc_simplified2.png"><img alt="../../../../../_images/motor_dc_simplified2.png" src="../../../../../_images/motor_dc_simplified2.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Motor simplificado a lazo cerrado con perturbaciones</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Analizar el tipo de sistema para las referencias <span class="math notranslate nohighlight">\(R(s)\)</span> y para las perturbaciones <span class="math notranslate nohighlight">\(W(w)\)</span> para el sistema de la figura anterior. Suponiendo que <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> son constantes y que:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(Dc(s) = k_p\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Dc(s) = k_p + \dfrac{k_i}{s}\)</span></p></li>
+</ol>
+<p>La función transferencia de la planta <span class="math notranslate nohighlight">\(G(s)\)</span> es:</p>
+<div class="math notranslate nohighlight">
+\[G(s)=\frac{A}{s(\tau s + 1)}\]</div>
+<p><strong>Solución</strong>
+Para el caso donde <span class="math notranslate nohighlight">\(D_c(s)=k_p\)</span>.</p>
+<p><strong>Primero analizamos el sistema para los cambios en la referencia.</strong></p>
+<p>Tenemos <span class="math notranslate nohighlight">\(G_0(s)= D_c(s)G(s) = k_p \dfrac{A}{s(\tau s + 1)}\)</span>.</p>
+<p>Vemos que el sistema tiene un polo en 0 por lo que <span class="math notranslate nohighlight">\(n=1\)</span>. Por lo tanto, para el seguimiento a referencia tenemos que el sistema es <strong>Tipo 1</strong>, y que tenemos que <span class="math notranslate nohighlight">\(K_v\)</span> es igual a</p>
+<div class="math notranslate nohighlight">
+\[K_v=\lim_{s\rightarrow 0}s  \dfrac{k_pA}{s(\tau s + 1)} = k_p A\]</div>
+<p>y el error sería:</p>
+<div class="math notranslate nohighlight">
+\[e_{ss}=\frac{1}{K_v}=\frac{1}{k_pA}\]</div>
+<p><strong>Analicemos ahora el caso 1 para el rechazo a perturbaciones.</strong></p>
+<p>Podemos ver que si hacemos <span class="math notranslate nohighlight">\(R(s)=0\)</span> tenemos que:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+T_w(s) &amp; = \dfrac{B}{A} \dfrac{\dfrac{A}{s(\tau s +1)}}{1+\dfrac{A}{s(\tau s +1)}k_p}= \dfrac{B}{s(\tau s+1)+Ak_p}\\
+&amp; = s^0 T_{0,w},\\
+n &amp; = 0,\\
+K_{0, w} &amp; = -\dfrac{Ak_p}{B}\\
+\end{align}
+\end{split}\]</div>
+<p>Entonces para rechazo a perturbaciones el sistema sería <strong>Tipo 0</strong>, y el error será:</p>
+<div class="math notranslate nohighlight">
+\[e_{ss} = -\frac{B}{Ak_p}\]</div>
+<p>Ahora empecemos con el <strong>caso 2</strong>.</p>
+<p><strong>Primero analizamos el sistema para los cambios en la referencia.</strong></p>
+<p>Tenemos</p>
+<div class="math notranslate nohighlight">
+\[G_0(s)= D_c(s)G(s) = \left(k_p + \dfrac{k_i}{s}\right) \dfrac{A}{s(\tau s + 1)} = \dfrac{sk_p + k_i}{s} \dfrac{A}{s(\tau s + 1)} = \dfrac{A(sk_p + k_i)}{s^2(\tau s + 1)}\]</div>
+<p>Vemos que el sistema tiene dos polos en 0 por lo que <span class="math notranslate nohighlight">\(n=2\)</span>. Por lo tanto, para el seguimiento a referencia tenemos que el sistema es <strong>Tipo 2</strong>, y que tenemos que <span class="math notranslate nohighlight">\(K_a\)</span> es igual a</p>
+<div class="math notranslate nohighlight">
+\[K_a=\lim_{s^2\rightarrow 0}s^2  \dfrac{(sk_p+k_i)A}{s^2(\tau s + 1)} = k_i A\]</div>
+<p>y el error sería:</p>
+<div class="math notranslate nohighlight">
+\[e_{ss}=\frac{1}{K_a}=\frac{1}{k_iA}\]</div>
+<p><strong>Para rechazo a perturbaciones sería:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+T_w(s) &amp; = \dfrac{B}{A} \dfrac{\dfrac{A}{s(\tau s +1)}}{1+\dfrac{A}{s(\tau s +1)}\left(k_p + \dfrac{k_i}{s}\right)}\\
+ &amp; = \dfrac{B}{s(\tau s+1)+A\left(\dfrac{k_p + k_is}{s}\right)}\\
+ &amp; = \dfrac{Bs}{s^2(\tau s +1) + (k_ps+k_i)A }\\
+&amp; = s^1 T_{1,w},\\
+n &amp; = 1,\\
+K_{1, w} &amp; = -\frac{Ak_I}{B}\\
+\end{align}
+\end{split}\]</div>
+<p>Entonces para rechazo a perturbaciones es <strong>Tipo 1</strong>, y el error de estado estacionario a la rampa resulta:</p>
+<div class="math notranslate nohighlight">
+\[e_{ss} = - \frac{B}{Ak_i}\]</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sources/sources/notebooks_sources/modulo3/errores"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion-importante">Definición importante</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repaso-del-uso-del-teorema-del-valor-final-tvf">Repaso del uso del Teorema del Valor Final (TVF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-1-uso-del-teorema">Ejemplo 1. Uso del teorema</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-2-uso-incorrecto-de-este-teorema">Ejemplo 2: Uso incorrecto de este teorema</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-de-estado-estacionario-y-sistema-tipo">Error de estado estacionario y sistema tipo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-especial-realimentacion-unitaria-y-constantes-de-error">Caso especial: Realimentación unitaria y constantes de error</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#errores-en-funcion-del-tipo-de-sistema">Errores en función del tipo de sistema</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-1">Ejemplo 1</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-2">Ejemplo 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solucion-ejemplo-2">Solución ejemplo 2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#para-solucionar-en-casa-facil">Para solucionar en casa (fácil)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipo-de-sistema-para-la-regulacion-y-rechazo-a-las-perturbaciones">Tipo de sistema para la regulación y rechazo a las perturbaciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-3-tipo-de-sistema-para-un-motor-de-corriente-continua-con-control-de-posicion">Ejemplo 3: Tipo de sistema para un motor de corriente continua con control de posición</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Instituto Balseiro - CEATEN
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
