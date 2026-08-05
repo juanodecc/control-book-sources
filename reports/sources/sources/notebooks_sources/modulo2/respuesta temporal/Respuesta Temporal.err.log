@@ -39,10 +39,10 @@ Outputs (1): ['y[0]']
 [31mAttributeError[39m                            Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[2][39m[32m, line 3[39m
 [32m      1[39m H = ctrl.tf([[32m2[39m,[32m1[39m],[[32m1[39m,[32m3[39m,[32m2[39m])
-[32m      2[39m [38;5;28mprint[39m(H)
-[32m----> [39m[32m3[39m [38;5;28mprint[39m([33m'[39m[33mPolos de la función H(s):[39m[33m'[39m, [43mH[49m[43m.[49m[43mpole[49m())
-[32m      4[39m [38;5;28mprint[39m([33m'[39m[33mPolos de la función H(s):[39m[33m'[39m, H.zero())
-[32m      5[39m [38;5;28mprint[39m([33m'[39m[33mPolos de la función H(s):[39m[33m'[39m, H.dcgain())
+[32m      2[39m print(H)
+[32m----> [39m[32m3[39m print([33m'Polos de la función H(s):'[39m, H.pole())
+[32m      4[39m print([33m'Polos de la función H(s):'[39m, H.zero())
+[32m      5[39m print([33m'Polos de la función H(s):'[39m, H.dcgain())
 
 [31mAttributeError[39m: 'TransferFunction' object has no attribute 'pole'
 

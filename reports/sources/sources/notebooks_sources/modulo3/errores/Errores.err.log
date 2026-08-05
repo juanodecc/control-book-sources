@@ -27,7 +27,7 @@ Yaux.pole()
 [31mAttributeError[39m                            Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[2][39m[32m, line 2[39m
 [32m      1[39m Yaux=ctrl.tf([[32m3[39m,[32m2[39m],[[32m1[39m,[32m2[39m,[32m10[39m]) [38;5;66;03m#es Y(s)*s[39;00m
-[32m----> [39m[32m2[39m [43mYaux[49m[43m.[49m[43mpole[49m()
+[32m----> [39m[32m2[39m Yaux.pole()
 
 [31mAttributeError[39m: 'TransferFunction' object has no attribute 'pole'
 

@@ -25,7 +25,7 @@ G.pole()
 [31m---------------------------------------------------------------------------[39m
 [31mAttributeError[39m                            Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[4][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m [43mG[49m[43m.[49m[43mpole[49m()
+[32m----> [39m[32m1[39m G.pole()
 
 [31mAttributeError[39m: 'TransferFunction' object has no attribute 'pole'
 

@@ -26,8 +26,8 @@ print(l)
 [31m---------------------------------------------------------------------------[39m
 [31mValueError[39m                                Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[7][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m l,_=np.linalg.eig(A-[43mB[49m[38;5;129;43m@K[39;49m)
-[32m      2[39m [38;5;28mprint[39m(l)
+[32m----> [39m[32m1[39m l,_=np.linalg.eig(A-B@K)
+[32m      2[39m print(l)
 
 [31mValueError[39m: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 1)
 

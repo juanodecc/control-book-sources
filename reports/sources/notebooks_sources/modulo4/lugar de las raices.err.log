@@ -30,9 +30,11 @@ ceros_lc
 [31m---------------------------------------------------------------------------[39m
 [31mAttributeError[39m                            Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[2][39m[32m, line 5[39m
+[32m      1[39m k=[32m2[39m
+[32m      2[39m D=ctrl.tf([[32m1[39m, [32m20[39m],[[32m1[39m,[32m0[39m])
 [32m      3[39m G=ctrl.tf([[32m1[39m],[[32m1[39m,[32m10[39m])
 [32m      4[39m T=ctrl.feedback(k*D*G)
-[32m----> [39m[32m5[39m ceros_lc=[43mT[49m[43m.[49m[43mzero[49m()
+[32m----> [39m[32m5[39m ceros_lc=T.zero()
 [32m      6[39m ceros_lc
 
 [31mAttributeError[39m: 'TransferFunction' object has no attribute 'zero'

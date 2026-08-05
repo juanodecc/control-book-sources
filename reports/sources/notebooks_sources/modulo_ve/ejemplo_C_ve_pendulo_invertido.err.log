@@ -25,7 +25,7 @@ np.linalg.eigvals(pendulo.A-pendulo.B@K)
 [31m---------------------------------------------------------------------------[39m
 [31mValueError[39m                                Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[6][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m np.linalg.eigvals(pendulo.A-[43mpendulo[49m[43m.[49m[43mB[49m[38;5;129;43m@K[39;49m)
+[32m----> [39m[32m1[39m np.linalg.eigvals(pendulo.A-pendulo.B@K)
 
 [31mValueError[39m: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 1)
 

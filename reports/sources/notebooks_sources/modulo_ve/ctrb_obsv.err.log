@@ -26,8 +26,8 @@ print(np.linalg.eigvals(Ac))
 [31m---------------------------------------------------------------------------[39m
 [31mAttributeError[39m                            Traceback (most recent call last)
 [36mCell[39m[36m [39m[32mIn[4][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m [38;5;28mprint[39m([43mG[49m[43m.[49m[43mpole[49m())
-[32m      2[39m [38;5;28mprint[39m(np.linalg.eigvals(Ac))
+[32m----> [39m[32m1[39m print(G.pole())
+[32m      2[39m print(np.linalg.eigvals(Ac))
 
 [31mAttributeError[39m: 'TransferFunction' object has no attribute 'pole'
 
