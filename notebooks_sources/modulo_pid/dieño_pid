@@ -1,0 +1,317 @@
+# Control PID
+
+## **1. Introducción:**
+
+Este tipo de controladores surge de la industria de procesos, ampliamente usados en todo tipo de sistemas y plantas, sean de procesos o no, son equivalentes a controladores tipo Adelanto y Atraso de fase (Lead-Lag) surgidos de la industria de electrónica y comunicaciones. En el libro de Astrom- Murray hacen referencia a que 97% de los controladores usado en la industria de procesos es de este tipo (ref: L. Desborough and R. Miller, 2002).
+
+Veremos la estructura básica de estos controladores que fácilmente se puede extrapolar a otras adaptaciones que permite mejorar la respuesta en aplicaciones prácticas.
+
+> **Clave**: El control PID es la herramienta más usada en industria (~95% de lazos de control). Entender P, PI y PID es fundamental.
+
+### Función Básica del PID
+
+$$
+u(t) = K_p e(t) + K_i \int_0^t e(\tau) \, d\tau + K_d \frac{de}{dt} = K_p \left( e + \frac{1}{T_i} \int_0^t e(\tau) \, d\tau + T_d \frac{de}{dt} \right)
+$$
+
+$$
+Output = Proporcional + Integral + derivativo
+$$
+
+Nota: puedo usar Kp o Kc para referir a la ganancia proporcional del PID, esto es porque este apunte esta "inspirado" ;-), en distintos apuntes donde usan estas variantes dejando Kp para la ganancia del Proceso y Kc la del controlador. Voy a intentar usar Kp para el proporcional, pero puede falla.
+
+### Ejemplo de ajuste
+
+Con el objetivo de estudiar como afecta la respuesta temporal ajustar cada uno de estos parámetros del PID, $K_p$, $K_i$ y $K_d$. Se muestra a continuación la respuesta temporal de la salida $y$ y la acción de control $u$ para distintos valores del PID y función de transferencia de la planta $P(s)=\frac{1}{(s+1)^3}$.
+
+```{code-cell} ipython3
+import control as ctrl
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Función de transferencia del proceso: P(s) = 1 / (s + 1)^3
+P = ctrl.TransferFunction([1], [1, 3, 3, 1])  # (s + 1)^3 = s³ + 3s² + 3s + 1
+
+# Configuración de la figura (3 columnas x 2 filas: y(t) y u(t) para cada controlador)
+plt.figure(figsize=(15, 8))
+
+# Tiempo de simulación
+t = np.linspace(0, 20, 1000)
+
+# ========== (a) Controlador Proporcional (P) ==========
+plt.subplot(2, 3, 1)  # Fila 1, Columna 1 (y(t))
+kp_values = [1, 2, 5]  # Valores de kp a probar
+
+for kp in kp_values:
+    C = ctrl.TransferFunction([kp], [1])  # Controlador P: C(s) = kp
+    sys = ctrl.feedback(C * P, 1)
+    t, y = ctrl.step_response(sys, T=t)
+    plt.plot(t, y, label=f'Kp = {kp}')
+    plt.ylim([0,1.7])
+
+plt.title('(a) P Control: Salida $y(t)$')
+plt.xlabel('Tiempo')
+plt.ylabel('Salida')
+plt.grid(True)
+plt.legend()
+
+# Señal de control u(t) para P
+plt.subplot(2, 3, 4)  # Fila 2, Columna 1 (u(t))
+for kp in kp_values:
+    C = ctrl.TransferFunction([kp], [1])
+    sys_u = ctrl.feedback(C, P)  # Función de transferencia para u(t)
+    t, u = ctrl.step_response(sys_u, T=t)
+    plt.plot(t, u, label=f'Kp = {kp}')
+    plt.ylim([-2,5])
+
+plt.title('Accion de control $u(t)$')
+plt.xlabel('Tiempo')
+plt.ylabel('Control')
+plt.grid(True)
+plt.legend()
+
+# ========== (b) Controlador PI ==========
+plt.subplot(2, 3, 2)  # Fila 1, Columna 2 (y(t))
+kp = 1  # Fijo Kp = 1
+ki_values = [0, 0.2, 0.5, 1]  # Valores de ki a probar
+
+for ki in ki_values:
+    if ki == 0:
+        C = ctrl.TransferFunction([kp], [1])  # Puro proporcional si Ki = 0
+    else:
+        C = ctrl.TransferFunction([kp, ki], [1, 0])  # PI: C(s) = (kp*s + ki)/s
+    sys = ctrl.feedback(C * P, 1)
+    t, y = ctrl.step_response(sys, T=t)
+    plt.plot(t, y, label=f'Ki = {ki} (Kp=1)')
+    plt.ylim([0,1.7])
+
+plt.title('(b) PI Control: Salida $y(t)$')
+plt.xlabel('Tiempo')
+plt.ylabel('Salida')
+plt.grid(True)
+plt.legend()
+
+# Señal de control u(t) para PI
+plt.subplot(2, 3, 5)  # Fila 2, Columna 2 (u(t))
+for ki in ki_values:
+    if ki == 0:
+        C = ctrl.TransferFunction([kp], [1])
+    else:
+        C = ctrl.TransferFunction([kp, ki], [1, 0])
+    sys_u = ctrl.feedback(C, P)
+    t, u = ctrl.step_response(sys_u, T=t)
+    plt.plot(t, u, label=f'Ki = {ki} (Kp=1)')
+    plt.ylim([-2,5])
+
+plt.title('Acción de control $u(t)$')
+plt.xlabel('Tiempo')
+plt.ylabel('Control')
+plt.grid(True)
+plt.legend()
+
+# ========== (c) Controlador PID ==========
+plt.subplot(2, 3, 3)  # Fila 1, Columna 3 (y(t))
+kp = 2.5  # Fijo Kp = 2.5
+ki = 1.5  # Fijo Ki = 1.5
+kd_values = [0, 1, 2, 4]  # Valores de Kd a probar
+
+for kd in kd_values:
+    C = ctrl.TransferFunction([kd, kp, ki], [1, 0])  # PID: C(s) = (kd*s² + kp*s + ki)/s
+    sys = ctrl.feedback(C * P, 1)
+    t, y = ctrl.step_response(sys, T=t)
+    plt.plot(t, y, label=f'Kd = {kd} (Kp=2.5, Ki=1.5)')
+    plt.ylim([0,1.7])
+
+plt.title('(c) PID Control: Salida $y(t)$')
+plt.xlabel('Tiempo')
+plt.ylabel('Salida')
+plt.grid(True)
+plt.legend()
+
+# Señal de control u(t) para PID
+plt.subplot(2, 3, 6)  # Fila 2, Columna 3 (u(t))
+for kd in kd_values:
+    C = ctrl.TransferFunction([kd, kp, ki], [1, 0])
+    sys_u = ctrl.feedback(C, P)
+    t, u = ctrl.step_response(sys_u*ctrl.tf(1,[1/1000,1]), T=t)
+    plt.plot(t, u, label=f'Kd = {kd} (Kp=2.5, Ki=1.5)')
+    plt.ylim([-2,5])
+
+plt.title('Acción de control $u(t)$')
+plt.xlabel('Tiempo')
+plt.ylabel('Control')
+plt.grid(True)
+plt.legend()
+
+# Ajustar espaciado y mostrar figura
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## **2. Control Proporcional (P-only)**
+
+### **Conceptos clave**
+
+| Aspecto | Descripción |
+| --------- | ------------- |
+| **Ecuación** | $u(t) = u_{bias} + K_c \cdot e(t)$ |
+| **Parámetro** | Solo $K_c$ (ganancia del controlador) |
+| **$u_{bias}$** | Valor de $u(t)$ al pasar de manual a automático (transferencia sin saltos bruscos "bumpless") |
+| **Error** | $e(t) = SP - PV$ |
+
+### **Sistemas con integradores vs. sin integradores**
+
+- **Sin integrador** (ej: TCLab, reactor con coeficiente de temperatura negativo): la salida vuelve al estado estacionario tras un impulso → **P-only produce offset**
+- **Con integrador** (ej: nivel de tanque sin salida): la salida no vuelve al estado inicial → **P-only puede ser suficiente**
+
+> **Conexión con reactor**: La cinética puntual en baja potencia tiene comportamiento similar a un integrador (neutrones acumulados). Pero en la práctica, el control de reactores usa PI por robustez.
+
+#### **Tuning ITAE para P-only**
+
+$$K_c = \frac{0.20}{K_p}\left(\frac{\tau_p}{\theta_p}\right)^{1.22} \quad \text{(Set point tracking)}$$
+$$K_c = \frac{0.50}{K_p}\left(\frac{\tau_p}{\theta_p}\right)^{1.08} \quad \text{(Disturbance rejection)}$$
+
+#### **Ejercicio en clase**
+Usar el código de APMonitor para el proceso FOPDT ($K_p=2$, $\tau_p=200$, $\theta_p=0$):
+1. Simular respuesta en lazo abierto (manual)
+2. P-only con $K_c = 2$ y $K_c = 0.5$
+3. Observar: **offset persistente** con P-only en procesos no integradores
+
+---
+
+### **3. Control Proporcional-Integral (PI) — 35 min**
+
+#### **Conceptos clave** 
+| Aspecto | Descripción |
+|---------|-------------|
+| **Ecuación** | $u(t) = u_{bias} + K_c \, e(t) + \frac{K_c}{\tau_I}\int_0^t e(t)dt$ |
+| **Parámetros** | $K_c$ y $\tau_I$ (tiempo de reset integral) |
+| **Integral** | Elimina el offset acumulando el error en el tiempo |
+
+> **PI es el controlador más popular** — incluso más que PID completo en muchas aplicaciones industriales.
+
+#### **Forma discreta** 
+$$u(t) = u_{bias} + K_c \, e(t) + \frac{K_c}{\tau_I}\sum_{i=1}^{n_t} e_i(t)\Delta t$$
+
+#### **Tuning IMC (Internal Model Control)** 
+| Tuning | $\tau_c$ |
+|--------|----------|
+| Agresivo | $\max(0.1\tau_p, 0.8\theta_p)$ |
+| Moderado | $\max(1.0\tau_p, 8.0\theta_p)$ |
+| Conservador | $\max(10.0\tau_p, 80.0\theta_p)$ |
+
+$$K_c = \frac{1}{K_p}\frac{\tau_p}{(\theta_p + \tau_c)} \quad \tau_I = \tau_p$$
+
+> **Regla mnemotécnica simple** (moderado, $\theta_p \approx 0$): $K_c = 1/K_p$, $\tau_I = \tau_p$
+
+#### **Anti-reset windup** 
+- **Problema**: Si $u(t)$ satura (ej: calentador al 100%), el término integral sigue acumulando error.
+- **Consecuencia**: Cuando el error cambia de signo, el controlador tarda mucho en "desaturar".
+- **Solución**: No acumular el error integral cuando $u(t)$ está saturado.
+
+> **Analogía del auto**: Si pones el cruise control a 200 km/h en un auto que solo llega a 150, y luego lo bajas a 0, el auto no frena inmediatamente porque el término integral está "cargado".
+
+#### **Ejercicio en clase**
+Simular PI con $K_c = 2$ y variar $\tau_I = \{200, 100, 10\}$:
+- $\tau_I$ grande → integral lenta, offset tarda en eliminarse
+- $\tau_I$ pequeño → integral rápida, pero puede oscilar
+
+---
+
+### **4. Control Proporcional-Integral-Derivativo (PID) — 35 min**
+
+#### **Conceptos clave** 
+| Aspecto | Descripción |
+|---------|-------------|
+| **Ecuación** | $u(t) = u_{bias} + K_c e(t) + \frac{K_c}{\tau_I}\int e(t)dt - K_c\tau_D\frac{d(PV)}{dt}$ |
+| **Parámetros** | $K_c$, $\tau_I$, $\tau_D$ |
+| **Derivativo** | Amortigua oscilaciones, anticipa cambios |
+
+> **Nota importante**: Se usa $\frac{d(PV)}{dt}$ en lugar de $\frac{de(t)}{dt}$ para evitar **derivative kick** cuando cambia el set point. 
+
+#### **Formas del PID**
+- **Forma posicional** (la clásica, mostrada arriba)
+- **Forma de velocidad** (usada en PLCs/DCS industriales): 
+  - Type A: Textbook PID (raro en práctica)
+  - Type B: Quita SP del derivativo
+  - **Type C (preferida)**: Quita SP del proporcional y derivativo
+
+#### **Tuning IMC para PID** 
+$$K_c = \frac{1}{K_p}\frac{\tau_p + 0.5\theta_p}{\tau_c + 0.5\theta_p}$$
+$$\tau_I = \tau_p + 0.5\theta_p \quad \tau_D = \frac{\tau_p\theta_p}{2\tau_p + \theta_p}$$
+
+> **Regla simple** (moderado, $\theta_p \approx 0$): $K_c = 1/K_p$, $\tau_I = \tau_p$, $\tau_D = 0$ → se reduce a PI
+
+#### **Filtro derivativo** 
+El término derivativo amplifica el ruido de medición. Se puede agregar un filtro:
+$$\alpha = \frac{\tau_c(\tau_p + 0.5\theta_p)}{\tau_p(\tau_c + \theta_p)}$$
+
+#### **Ejercicio en clase**
+Comparar P, PI y PID en el mismo proceso:
+- P: offset persistente
+- PI: elimina offset, posible oscilación
+- PID: mejor amortiguamiento, menos overshoot
+
+---
+
+### **5. Aplicación al TCLab — 20 min**
+
+Ahora conectamos todo con el TCLab que ya modelaron. 
+
+#### **Pasos:**
+1. Usar los parámetros FOPDT que identificaron ($K_p$, $\tau_p$, $\theta_p$)
+2. Aplicar tuning IMC moderado
+3. Implementar el controlador PID discreto en Python:
+
+```python
+def pid(sp, pv, pv_last, ierr, dt):
+    KP = Kc
+    KI = Kc / tauI
+    KD = Kc * tauD
+    
+    error = sp - pv
+    ierr = ierr + KI * error * dt
+    dpv = (pv - pv_last) / dt
+    
+    P = KP * error
+    I = ierr
+    D = -KD * dpv
+    
+    op = op0 + P + I + D
+    
+    # Anti-reset windup
+    if op < oplo or op > ophi:
+        I = I - KI * error * dt
+        op = max(oplo, min(ophi, op))
+    
+    return [op, P, I, D]
+```
+
+4. Probar con set point change: 23°C → 60°C
+
+---
+
+### **6. Conexión con el Reactor Nuclear — 10 min**
+
+| Aspecto | Reactor Nuclear | TCLab |
+|---------|----------------|-------|
+| **Dinámica** | Cinética puntual + térmica | Primer orden + retardo |
+| **Estabilidad** | Inherente inestabilidad en baja potencia | Estable en lazo abierto |
+| **Control típico** | Control de reactividad (barras) + temperatura | Control de potencia del calentador |
+| **PID aplicable** | Sí, pero con consideraciones de seguridad | Ideal para práctica |
+
+> **Discusión**: En el reactor, el control PID se usa para regular la temperatura del refrigerante o la potencia, pero el control de reactividad (barras de control) tiene lógicas más complejas por seguridad nuclear.
+
+---
+
+## 💡 Tips para la Clase
+
+1. **Usa la simulación antes del hardware**: Que los alumnos primero simulen en Python (como el código de APMonitor) antes de conectar el TCLab físico.
+
+2. **Visualiza las contribuciones P, I, D**: Graficar por separado $P(t)$, $I(t)$, $D(t)$ ayuda a entender qué está haciendo cada término.
+
+3. **Conecta con rlocus**: Muestra cómo aumentar $K_c$ mueve los polos en el plano complejo → más $K_c$ = más cercanos al eje imaginario = más oscilatorio.
+
+4. **Anti-reset windup es crucial**: Es un concepto que los alumnos suelen subestimar hasta que ven la simulación con saturación.
